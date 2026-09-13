@@ -27,25 +27,26 @@ Recommended pipeline
 
 
 NLP pipeline:
-Raw JSON
-   ↓
-Flatten nested JSON
-   ↓
-One row per answer
-   ↓
-Data Cleaning
-   ↓
-EDA
-   ↓
-Contract / Clause Text
-   ↓
-NER
-   ↓
-Clause Classification
-   ↓
-Risk Detection
-   ↓
-Risk Score
+
+                    CONTRACT JSON
+                         ↓
+                  Flatten JSON
+                         ↓
+                 answer_text
+                         ↓
+              ┌──────────┴──────────┐
+              ↓                     ↓
+       Structured fields       Clause text
+       Dates / Parties         Termination /
+       Jurisdiction            Confidentiality
+              ↓                     ↓
+        Date extraction       Embeddings
+                                    ↓
+                              Vector database
+                                    ↓
+                         Semantic similarity
+                                    ↓
+                              Risk scoring
 
 Exploratory Data Analysis:
 
@@ -148,3 +149,24 @@ Premium Managed Hosting Agreement                          42
 Maintenance and support contract for SICAP(R) modules      42
 Franchise Agreement4                                       42
 Name: count, Length: 174, dtype: int64
+
+
+Extracted date Dataframe:
+
+        contract_title                               field          extracted_date
+6      DISTRIBUTOR AGREEMENT                      Agreement Date     1999-09-07
+7      DISTRIBUTOR AGREEMENT                      Effective Date     2026-09-10
+8      DISTRIBUTOR AGREEMENT                      Effective Date     2026-09-01
+9      DISTRIBUTOR AGREEMENT                     Expiration Date     2026-09-10
+10     DISTRIBUTOR AGREEMENT                        Renewal Term     2026-01-10
+...                      ...                                 ...            ...
+27987  Endorsement Agreement                      Agreement Date     2011-02-13
+27988  Endorsement Agreement                      Effective Date     2011-02-21
+27989  Endorsement Agreement                     Expiration Date           None
+27990  Endorsement Agreement                        Renewal Term           None
+27991  Endorsement Agreement  Notice Period To Terminate Renewal           None
+
+[2712 rows x 3 columns]
+
+Extracted Dates Summary:
+1405 missing dates out of 2712  
