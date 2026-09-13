@@ -1,6 +1,6 @@
 import json
 import pandas as pd
-
+from dateutil import parser
 # Load JSON
 with open(r"D:\\ContractIntelligence\\cuad-main\\data\\CUADv1.json", "r", encoding="utf-8") as f:
     data = json.load(f)
@@ -59,14 +59,45 @@ df = pd.DataFrame(rows)
 # Basic inspection
 print(df.head())
 print("\nShape:", df.shape)
-# print("\nColumns:")
-# print(df.columns.tolist())
-# print(df.info())
+print(df.isnull().sum())
+print("\nColumns:")
+print(df.columns.tolist())
+print(df.info())
 
-# field_counts = df['field'].value_counts()
-# print("\nField Counts:")
-# print(field_counts)
+field_counts = df['field'].value_counts()
+print("\nField Counts:")
+print(field_counts)
 
-# title_counts = df['contract_title'].value_counts()
-# print("\nContract Title Counts:")   
-# print(title_counts)
+title_counts = df['contract_title'].value_counts()
+print("\nContract Title Counts:")   
+print(title_counts)
+
+# Date analyis
+
+
+def extract_date(text):
+    if not text:
+        return None
+
+    try:
+        return parser.parse(text, fuzzy=True).date()
+    except:
+        return None
+
+df["extracted_date"] = df["answer_text"].apply(extract_date)
+
+date_fields = [
+    "Agreement Date",
+    "Effective Date",
+    "Expiration Date",
+    "Renewal Term",
+    "Notice Period To Terminate Renewal"
+]
+
+date_df = df[df["field"].isin(date_fields)].copy()
+
+print(date_df[
+    ["contract_title", "field", "extracted_date"]
+])
+print("\nExtracted Dates Summary:")
+print(date_df["extracted_date"].isnull().sum(), "missing dates out of", len(date_df))
