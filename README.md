@@ -27,26 +27,25 @@ Recommended pipeline
 
 
 NLP pipeline:
-
-            Raw JSON
-               ↓
-            Flatten nested JSON
-               ↓
-            One row per answer
-               ↓
-            Data Cleaning
-               ↓
-            EDA
-               ↓
-            Contract / Clause Text
-               ↓
-            NER
-               ↓
-            Clause Classification
-               ↓
-            Risk Detection
-               ↓
-            Risk Score
+Raw JSON
+   ↓
+Flatten nested JSON
+   ↓
+One row per answer
+   ↓
+Data Cleaning
+   ↓
+EDA
+   ↓
+Contract / Clause Text
+   ↓
+NER
+   ↓
+Clause Classification
+   ↓
+Risk Detection
+   ↓
+Risk Score
 
 Exploratory Data Analysis:
 
@@ -67,6 +66,19 @@ memory usage: 1.7+ MB
 None
 
 Shape: (28031, 9)
+
+
+Null values:
+
+contract_title        0
+qa_id                 0
+details               0
+field                 0
+question              0
+context_text          0
+answer_text           0
+answer_start      14208
+is_impossible         0
 
 
 Meaning of the column names:
@@ -123,16 +135,16 @@ Field Counts:
       Name: count, dtype: int64
 
 Contract Title Counts:
-
-      Development Agreement                                    1324
-      STRATEGIC ALLIANCE AGREEMENT                             1304
-      SPONSORSHIP AGREEMENT                                    1134
-      Branding Agreement                                       1095
-      Content License Agreement                                 836
-                                                               ... 
-      Purchase Agreement2                                        43
-      WEB HOSTING AGREEMENT                                      42
-      Premium Managed Hosting Agreement                          42
-      Maintenance and support contract for SICAP(R) modules      42
-      Franchise Agreement4                                       42
-      Name: count, Length: 174, dtype: int64
+contract_title
+Development Agreement                                    1324
+STRATEGIC ALLIANCE AGREEMENT                             1304
+SPONSORSHIP AGREEMENT                                    1134
+Branding Agreement                                       1095
+Content License Agreement                                 836
+                                                         ... 
+Purchase Agreement2                                        43
+WEB HOSTING AGREEMENT                                      42
+Premium Managed Hosting Agreement                          42
+Maintenance and support contract for SICAP(R) modules      42
+Franchise Agreement4                                       42
+Name: count, Length: 174, dtype: int64
