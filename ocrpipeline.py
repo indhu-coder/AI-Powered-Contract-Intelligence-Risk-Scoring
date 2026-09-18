@@ -67,7 +67,7 @@ def extract_text_from_pdf(pdf_path, ocr_output="ocr_output.pdf"):
 # TEST
 # ---------------------------------
 
-pdf_path = r"D:\\ContractIntelligence\\sample_contract.pdf"
+pdf_path = r"D:\\ContractIntelligence\\scanned_copy.pdf"
 
 text = extract_text_from_pdf(pdf_path)
 
