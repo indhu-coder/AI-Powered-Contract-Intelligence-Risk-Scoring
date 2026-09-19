@@ -170,74 +170,72 @@ Extracted date Dataframe:
 [2712 rows x 3 columns]
 
 Date Analysis:
-DATE ANALYSIS
-                           contract_title            field extracted_date
-6                   DISTRIBUTOR AGREEMENT   Agreement Date     1999-09-07
-7                   DISTRIBUTOR AGREEMENT   Effective Date     2026-09-10
-8                   DISTRIBUTOR AGREEMENT   Effective Date     2026-09-01
-9                   DISTRIBUTOR AGREEMENT  Expiration Date     2026-09-10
-73   PROMOTION AND DISTRIBUTION AGREEMENT   Agreement Date            NaT
-74   PROMOTION AND DISTRIBUTION AGREEMENT   Effective Date     2011-08-01
-75   PROMOTION AND DISTRIBUTION AGREEMENT  Expiration Date     2013-07-31
-76   PROMOTION AND DISTRIBUTION AGREEMENT  Expiration Date            NaT
+
+      DATE ANALYSIS
+                                 contract_title            field extracted_date
+      6                   DISTRIBUTOR AGREEMENT   Agreement Date     1999-09-07
+      7                   DISTRIBUTOR AGREEMENT   Effective Date     2026-09-10
+      8                   DISTRIBUTOR AGREEMENT   Effective Date     2026-09-01
+      9                   DISTRIBUTOR AGREEMENT  Expiration Date     2026-09-10
+      73   PROMOTION AND DISTRIBUTION AGREEMENT   Agreement Date            NaT
+      74   PROMOTION AND DISTRIBUTION AGREEMENT   Effective Date     2011-08-01
+      75   PROMOTION AND DISTRIBUTION AGREEMENT  Expiration Date     2013-07-31
+      76   PROMOTION AND DISTRIBUTION AGREEMENT  Expiration Date            NaT
 
 
 DURATION ANALYSIS
-                             field duration
+                                  
+                                   field duration
    
-                      Renewal Term      NaN
-Notice Period To Terminate Renewal      NaN
-                      Renewal Term  1 month
-                      Renewal Term  15 days
-Notice Period To Terminate Renewal  1 month
-Notice Period To Terminate Renewal  15 days
-                      Renewal Term      NaN
+                            Renewal Term      NaN
+      Notice Period To Terminate Renewal      NaN
+                            Renewal Term  1 month
+                            Renewal Term  15 days
+      Notice Period To Terminate Renewal  1 month
+      Notice Period To Terminate Renewal  15 days
+                            Renewal Term      NaN
 
 
 Duration Summary
 field
 
-Non-Disparagement                       0
-Non-Transferable License                0
-Notice Period To Terminate Renewal    100
-Parties                                 0
-Post-Termination Services               0
-Price Restrictions                      0
-Renewal Term                          154
+      Non-Disparagement                       0
+      Non-Transferable License                0
+      Notice Period To Terminate Renewal    100
+      Parties                                 0
+      Post-Termination Services               0
+      Price Restrictions                      0
+      Renewal Term                          154
 
 Name: duration, dtype: int64
 
 
-field                               duration                 
-Renewal Term                        1 year                       33
-Notice Period To Terminate Renewal  1 year                       21
-Renewal Term                        5 years                      14
-                                    30 days                      12
+      field                               duration                 
+      Renewal Term                        1 year                       33
+      Notice Period To Terminate Renewal  1 year                       21
+      Renewal Term                        5 years                      14
+                                          30 days                      12
 
 Installing collected packages: en-core-web-sm
 Successfully installed en-core-web-sm-3.8.0
 
 
-============================================================
-NER PROCESS STARTED
-Start time: 2026-09-19 15:39:08
-============================================================
-SpaCy NER model loaded successfully.
-Total dataframe rows: 28031
-Unique contexts: 509
-Processed 100/509 contexts
-Processed 200/509 contexts
-Processed 300/509 contexts
-Processed 400/509 contexts
-Processed 500/509 contexts
-NER completed.
-============================================================
-NER COMPLETED
-End time: 2026-09-19 15:47:20
-Total time: 0:08:11.829495
-============================================================
+      ============================================================
+      NER PROCESS STARTED
+      Start time: 2026-09-19 15:39:08
+      ============================================================
+      SpaCy NER model loaded successfully.
+      Total dataframe rows: 28031
+      Unique contexts: 509
+      NER completed.
+      ============================================================
+      End time: 2026-09-19 15:47:20
+      Total time: 0:08:11.829495
+      ============================================================
+
+      
        contract_title                    legal_entities
-DISTRIBUTOR AGREEMENT 
+      DISTRIBUTOR AGREEMENT 
                               [{'text': 'DISTRIBUTOR AGREEMENT
 
          ', 'label': 'ORG'}, {'text': 'DISTRIBUTOR  AGREEMENT', 'label': 'ORG'}, {'text': 'Electric CityCorp.', 'label': 'ORG'}, {'text': 'Delaware', 'label': 'GPE'}, {'text': 'Electric City', 'label': 'GPE'}, {'text': 'this 7th day of September, 1999', 'label': 'DATE'}, {'text': 'Company', 'label': 'ORG'}, {'text': 'Company', 'label': 'ORG'}, {'text': 'Company', 'label': 'ORG'}, {'text': 'Distributor', 'label': 'PERSON'}, {'text': 'Objectives', 'label': 'ORG'}, {'text': 'Distributor', 'label': 'ORG'}, {'text': 'Company', 'label': 'ORG'}, {'text': 'the State of  Illinois', 'label': 'ORG'}, {'text': 'Distributor', 'label': 'LOC'}, {'text': 'Distributor as Company's', 'label': 'ORG'}, {'text': 'Distributor', 'label': 'PERSON'}]
