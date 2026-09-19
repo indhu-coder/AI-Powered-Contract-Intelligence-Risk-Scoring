@@ -180,25 +180,11 @@ DATE ANALYSIS
 74   PROMOTION AND DISTRIBUTION AGREEMENT   Effective Date     2011-08-01
 75   PROMOTION AND DISTRIBUTION AGREEMENT  Expiration Date     2013-07-31
 76   PROMOTION AND DISTRIBUTION AGREEMENT  Expiration Date            NaT
-127                      Supply Agreement   Agreement Date            NaT
-128                      Supply Agreement   Effective Date            NaT
-129                      Supply Agreement  Expiration Date     2026-09-05
-173            WEB SITE HOSTING AGREEMENT   Agreement Date     1999-04-06
-174            WEB SITE HOSTING AGREEMENT   Effective Date            NaT
-175            WEB SITE HOSTING AGREEMENT  Expiration Date            NaT
-217                JOINT FILING AGREEMENT   Agreement Date     2020-03-27
-218                JOINT FILING AGREEMENT   Effective Date            NaT
-219                JOINT FILING AGREEMENT  Expiration Date            NaT
-261                 ENDORSEMENT AGREEMENT   Agreement Date     2005-01-13
-262                 ENDORSEMENT AGREEMENT   Effective Date     2004-09-01
-263                 ENDORSEMENT AGREEMENT  Expiration Date     2004-09-01
+
 
 DURATION ANALYSIS
                              field duration
-                      Renewal Term   1 year
-Notice Period To Terminate Renewal      NaN
-                      Renewal Term      NaN
-Notice Period To Terminate Renewal      NaN
+   
                       Renewal Term      NaN
 Notice Period To Terminate Renewal      NaN
                       Renewal Term  1 month
@@ -206,43 +192,11 @@ Notice Period To Terminate Renewal      NaN
 Notice Period To Terminate Renewal  1 month
 Notice Period To Terminate Renewal  15 days
                       Renewal Term      NaN
-Notice Period To Terminate Renewal      NaN
-                      Renewal Term      NaN
-Notice Period To Terminate Renewal      NaN
-                      Renewal Term      NaN
-Notice Period To Terminate Renewal      NaN
-                      Renewal Term      NaN
-Notice Period To Terminate Renewal      NaN
-                      Renewal Term      NaN
-Notice Period To Terminate Renewal      NaN
+
 
 Duration Summary
 field
-Affiliate License-Licensee              0
-Affiliate License-Licensor              0
-Agreement Date                          0
-Anti-Assignment                         0
-Audit Rights                            0
-Cap On Liability                        0
-Change Of Control                       0
-Competitive Restriction Exception       0
-Covenant Not To Sue                     0
-Document Name                           0
-Effective Date                          0
-Exclusivity                             0
-Expiration Date                         0
-Governing Law                           0
-Insurance                               0
-Ip Ownership Assignment                 0
-Irrevocable Or Perpetual License        0
-Joint Ip Ownership                      0
-License Grant                           0
-Liquidated Damages                      0
-Minimum Commitment                      0
-Most Favored Nation                     0
-No-Solicit Of Customers                 0
-No-Solicit Of Employees                 0
-Non-Compete                             0
+
 Non-Disparagement                       0
 Non-Transferable License                0
 Notice Period To Terminate Renewal    100
@@ -250,15 +204,7 @@ Parties                                 0
 Post-Termination Services               0
 Price Restrictions                      0
 Renewal Term                          154
-Revenue/Profit Sharing                  0
-Rofr/Rofo/Rofn                          0
-Source Code Escrow                      0
-Termination For Convenience             0
-Third Party Beneficiary                 0
-Uncapped Liability                      0
-Unlimited/All-You-Can-Eat-License       0
-Volume Restriction                      0
-Warranty Duration                       0
+
 Name: duration, dtype: int64
 
 
@@ -267,58 +213,31 @@ Renewal Term                        1 year                       33
 Notice Period To Terminate Renewal  1 year                       21
 Renewal Term                        5 years                      14
                                     30 days                      12
-Notice Period To Terminate Renewal  30 days                      12
-Renewal Term                        6 months                     11
-                                    2 years                      10
-                                    90 days                      10
-Notice Period To Terminate Renewal  90 days                      10
-Renewal Term                        3 years                       9
-                                    12 months                     8
-Notice Period To Terminate Renewal  6 months                      8
-Renewal Term                        60 days                       7
-Notice Period To Terminate Renewal  60 days                       7
-Renewal Term                        10 years                      6
-Notice Period To Terminate Renewal  12 months                     5
-Renewal Term                        3 year                        5
-Notice Period To Terminate Renewal  180 days                      4
-                                    5 years                       4
-                                    2 years                       4
-                                    3 years                       4
-Renewal Term                        5 year                        4
-Notice Period To Terminate Renewal  3 months                      3
-Renewal Term                        4 years                       3
-Notice Period To Terminate Renewal  5 year                        3
-Renewal Term                        7 years                       2
-Notice Period To Terminate Renewal  3 year                        2
-Renewal Term                        120 days                      2
-                                    10 year                       2
-                                    180 days                      2
-                                    1 Year                        2
-                                    1 month                       1
-                                    15 days                       1
-Notice Period To Terminate Renewal  1 month                       1
-                                    15 days                       1
-                                    7 years                       1
-                                    10 years                      1
-Renewal Term                        1 years                       1
-Notice Period To Terminate Renewal  1 years                       1
-                                    120 days                      1
-Renewal Term                        30 years                      1
-Notice Period To Terminate Renewal  30 years                      1
-Renewal Term                        6 weeks                       1
-Notice Period To Terminate Renewal  6 weeks                       1
-Renewal Term                        30  days                      1
-Notice Period To Terminate Renewal  30  days                      1
-                                    10 year                       1
-Renewal Term                        6 month                       1
-Notice Period To Terminate Renewal  6 month                       1
-Renewal Term                        65 days                       1
-Notice Period To Terminate Renewal  12\n\n\n\n\n\n     months     1
-Renewal Term                        30 day                        1
-                                    3 months                      1
-Notice Period To Terminate Renewal  5 days                        1
-Renewal Term                        24 months                     1
-                                    14 days                       1
-Name: count, dtype: int64
-Installing collected packages: en-core-web-md
-Successfully installed en-core-web-md-3.8.0
+
+Installing collected packages: en-core-web-sm
+Successfully installed en-core-web-sm-3.8.0
+
+
+============================================================
+NER PROCESS STARTED
+Start time: 2026-09-19 15:39:08
+============================================================
+SpaCy NER model loaded successfully.
+Total dataframe rows: 28031
+Unique contexts: 509
+Processed 100/509 contexts
+Processed 200/509 contexts
+Processed 300/509 contexts
+Processed 400/509 contexts
+Processed 500/509 contexts
+NER completed.
+============================================================
+NER COMPLETED
+End time: 2026-09-19 15:47:20
+Total time: 0:08:11.829495
+============================================================
+       contract_title                    legal_entities
+DISTRIBUTOR AGREEMENT 
+                              [{'text': 'DISTRIBUTOR AGREEMENT
+
+         ', 'label': 'ORG'}, {'text': 'DISTRIBUTOR  AGREEMENT', 'label': 'ORG'}, {'text': 'Electric CityCorp.', 'label': 'ORG'}, {'text': 'Delaware', 'label': 'GPE'}, {'text': 'Electric City', 'label': 'GPE'}, {'text': 'this 7th day of September, 1999', 'label': 'DATE'}, {'text': 'Company', 'label': 'ORG'}, {'text': 'Company', 'label': 'ORG'}, {'text': 'Company', 'label': 'ORG'}, {'text': 'Distributor', 'label': 'PERSON'}, {'text': 'Objectives', 'label': 'ORG'}, {'text': 'Distributor', 'label': 'ORG'}, {'text': 'Company', 'label': 'ORG'}, {'text': 'the State of  Illinois', 'label': 'ORG'}, {'text': 'Distributor', 'label': 'LOC'}, {'text': 'Distributor as Company's', 'label': 'ORG'}, {'text': 'Distributor', 'label': 'PERSON'}]
