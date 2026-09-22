@@ -98,5 +98,5 @@ print("=" * 60)
 print(
     df[
         ["contract_title", "legal_entities"]
-    ].head(5).to_string(index=False)
+    ].head(1).to_string(index=False)
 )
