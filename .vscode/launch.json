@@ -1,0 +1,45 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "🚀 Run ContractIQ Web App",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "streamlit",
+            "args": [
+                "run",
+                "${workspaceFolder}/app.py"
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
+            "name": "📄 Run OCR Pipeline (ocrpipeline.py)",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/ocrpipeline.py",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "📊 Run CUAD Analysis (main.py)",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/main.py",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "🏷️ Run NER Extraction (nerpipeline.py)",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/nerpipeline.py",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "🤖 Run Transformer Embeddings (transformer_model.py)",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/transformer_model.py",
+            "console": "integratedTerminal"
+        }
+    ]
+}
