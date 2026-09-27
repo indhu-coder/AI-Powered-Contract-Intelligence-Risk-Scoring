@@ -2,7 +2,7 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "🚀 Run ContractIQ Web App",
+            "name": "🚀 Run ContractIQ Web App (Streamlit)",
             "type": "debugpy",
             "request": "launch",
             "module": "streamlit",
@@ -12,6 +12,45 @@
             ],
             "console": "integratedTerminal",
             "justMyCode": true
+        },
+        {
+            "name": "⚡ Run FastAPI Backend (api.py)",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "uvicorn",
+            "args": [
+                "api:app",
+                "--host",
+                "0.0.0.0",
+                "--port",
+                "8000",
+                "--reload"
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
+            "name": "🔍 Build Vector Index (build_vector_index.py)",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/build_vector_index.py",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "🏋️ Train Clause Model (train_clause_model.py)",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/train_clause_model.py",
+            "args": ["--quick"],
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "📈 Evaluate Model (evaluate_model.py)",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/evaluate_model.py",
+            "args": ["--quick"],
+            "console": "integratedTerminal"
         },
         {
             "name": "📄 Run OCR Pipeline (ocrpipeline.py)",

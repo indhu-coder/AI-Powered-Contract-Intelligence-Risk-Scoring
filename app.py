@@ -435,35 +435,47 @@ elif menu == "🔍 Semantic Search & Embeddings":
     st.markdown('<div class="sub-header">Query contracts using SentenceTransformer (`all-MiniLM-L6-v2`) dense vector embeddings.</div>', unsafe_allow_html=True)
 
     query = st.text_input("Enter legal query or clause requirement:", "limitation of liability and indemnification cap")
+    top_k_select = st.slider("Number of results to retrieve:", min_value=1, max_value=20, value=5)
 
-    if st.button("Search Contracts", type="primary"):
-        with st.spinner("Encoding query and searching contract corpus..."):
-            from sentence_transformers import SentenceTransformer, util
-            model = SentenceTransformer("all-MiniLM-L6-v2")
-            df = load_cuad_dataset()
+    v_dir = BASE_DIR / "data" / "vector_store"
+    from vector_store import VectorStore
 
-            if df is not None:
-                # Sample 100 contracts for fast interactive search
-                unique_contracts = df[["contract_title", "context_text"]].drop_duplicates("contract_title").head(50)
-                corpus_texts = unique_contracts["context_text"].str.slice(0, 1000).tolist()
-                corpus_embeddings = model.encode(corpus_texts, convert_to_tensor=True)
-                query_embedding = model.encode(query, convert_to_tensor=True)
+    store = VectorStore()
+    has_index = store.load(v_dir)
 
-                scores = util.cos_sim(query_embedding, corpus_embeddings)[0].cpu().numpy()
-                unique_contracts["similarity_score"] = scores
-                results = unique_contracts.sort_values(by="similarity_score", ascending=False).head(5)
+    c_s1, c_s2 = st.columns([1, 1])
+    with c_s1:
+        if has_index:
+            st.success(f"⚡ FAISS Vector Store active: **{store.count():,}** passages indexed.")
+        else:
+            st.warning("FAISS index not found. Click below to build.")
+            if st.button("Build Vector Index Now"):
+                with st.spinner("Indexing contracts into FAISS..."):
+                    import subprocess
+                    subprocess.run([sys.executable, "build_vector_index.py", "--limit", "30"], cwd=str(BASE_DIR))
+                st.rerun()
 
-                st.subheader("Top Relevant Contracts")
-                for _, row in results.iterrows():
+    if st.button("Search Contracts with FAISS", type="primary"):
+        with st.spinner("Searching FAISS vector database..."):
+            if has_index and store.count() > 0:
+                results = store.search(query, top_k=top_k_select, min_score=0.1)
+                st.subheader(f"Top {len(results)} Relevant Contract Passages")
+                for r in results:
                     st.markdown(
                         f"""
                         <div class="risk-card risk-low">
-                            <h4>{row['contract_title']} (Similarity: {row['similarity_score']:.4f})</h4>
-                            <p style="font-size:0.9rem; color:#4B5563;">{row['context_text'][:400]}...</p>
+                            <div style="display:flex; justify-content:space-between;">
+                                <h4 style="margin:0; color:#1E3A8A;">{r.get('contract_title', 'Contract')}</h4>
+                                <span class="metric-badge badge-info">Cosine Similarity: {r['similarity_score']:.4f}</span>
+                            </div>
+                            <p style="margin:0.5rem 0; font-size:0.92rem; color:#374151;">{r['text']}</p>
+                            <span style="font-size:0.8rem; color:#6B7280;">Passage ID: {r.get('id', 'N/A')} | Char range: [{r.get('char_start')}:{r.get('char_end')}]</span>
                         </div>
                         """,
                         unsafe_allow_html=True,
                     )
+            else:
+                st.error("Vector index is empty. Please build it first.")
 
 # ==============================================================================
 # TAB 4: PIPELINE EXECUTION & LOGS

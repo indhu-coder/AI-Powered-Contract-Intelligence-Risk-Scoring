@@ -1,0 +1,558 @@
+2026-09-27 19:48:58 | INFO    | [contractiq.api] [req:0f8cac32-4e0d-456d-a5c6-ac1a81e0a423] GET /health/extended -> 200 (224.63ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:1b4d9115-b418-413a-90e4-b9b55aee0079] GET /health -> 200 (5.54ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:f8833586-5618-412a-be6f-12ee7a2b23c4] GET /health -> 200 (4.93ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:14769b26-50f7-449e-ad6a-cc317ae0bed9] GET /health -> 200 (5.11ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:13a21ca7-f88e-496b-9c05-e535eee2b331] GET /health -> 200 (5.28ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:8d96f7c1-b545-4f3b-9a92-9a7627e7f845] GET /health -> 200 (5.95ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:39f73dde-51c0-459a-9fe3-56997ddc7df9] GET /health -> 200 (6.05ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:a5ad9456-4870-4462-a144-8c03ef8465ca] GET /health -> 200 (6.23ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:f1452d21-16a4-4247-b3d9-55527bc809ed] GET /health -> 200 (6.45ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:43a6ec1f-c5fb-4526-b539-41f0b96398cf] GET /health -> 200 (6.82ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:7d4c588d-ddf5-4ffa-b7cc-7a03cb26b151] GET /health -> 200 (7.19ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:f6370545-f69b-484a-afd7-38db5a9dbc61] GET /health -> 200 (0.77ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:4744eba9-af58-4025-98d0-ed2e26200025] GET /health -> 200 (0.42ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:a2543435-7c4c-4810-81df-3671dc1cc6c4] GET /health -> 200 (0.57ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:0c92fd33-507e-475f-acb1-e4762298c64c] GET /health -> 200 (0.41ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:fc65b928-cac5-4195-9f6a-6a2fe92ab098] GET /health -> 200 (0.38ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:96c1b020-a7ff-4439-a80f-fb56a35d972b] GET /health -> 200 (0.44ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:1ff332c2-b092-4087-8e5f-87c407aa803b] GET /health -> 200 (0.41ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:d954fe7f-a72e-455c-8b6c-0c58095f0cc5] GET /health -> 200 (0.52ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:471c0d01-beb2-43c5-be6a-6d1a484a81d0] GET /health -> 200 (0.43ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:0c4be73b-86f8-497c-8c43-e7ada7905ec1] GET /health -> 200 (0.40ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:78867c81-fdaf-4ae2-b9bd-b9b4570a018a] GET /health -> 200 (0.44ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:8b4f5fef-951d-45fb-bad0-317762abffea] GET /health -> 200 (0.45ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:992b3e78-7b66-4b40-b337-32b28dbf8c2b] GET /health -> 200 (0.37ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:502803bd-0c65-4c5a-9179-d72197fe5d0f] GET /health -> 200 (0.50ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:fc7f75eb-3eab-43dc-a749-32f693b33e95] GET /health -> 200 (0.45ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:e4b694e3-1216-4e19-8e91-e0b0e7127361] GET /health -> 200 (0.47ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:478855bb-2ba9-48ac-bd85-0da563a46bb2] GET /health -> 200 (0.46ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:20dcca5c-d571-47cb-9468-a037baf1c7a9] GET /health -> 200 (0.48ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:599a0f7d-89df-4bc2-b9ca-9623543847e1] GET /health -> 200 (0.54ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:cd65579d-a620-4f0f-baf6-ca9a26ba7e6b] GET /health -> 200 (0.57ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:787f94f4-a8fc-4e08-b95c-cfdde4748065] GET /health -> 200 (0.51ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:6757fd29-5c5a-4285-8d8e-58ec23394e07] GET /health -> 200 (0.43ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:17465d2a-f9c4-4990-864c-71ee3ec7934a] GET /health -> 200 (0.42ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:67c6292f-e03b-406a-b728-515c2e5c946e] GET /health -> 200 (0.44ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:5ac77586-94c3-41a9-bfb0-519868978448] GET /health -> 200 (0.40ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:fd191380-d404-49fe-bcb8-a2ecd53a468b] GET /health -> 200 (0.48ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:54611559-a201-4ddf-9c88-1e5c70f19f80] GET /health -> 200 (0.41ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:f24bbaeb-cd6f-4336-94dc-812ab5f4a747] GET /health -> 200 (0.40ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:a0159636-cc5e-4fa7-8189-e5cdf6db546a] GET /health -> 200 (0.49ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:4d8dad6e-d941-4dc6-81bd-289b2fcc3ae4] GET /health -> 200 (0.39ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:0e7bfcbd-b5ec-426e-b6fa-76d7b5cb1398] GET /health -> 200 (0.35ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:8ca60f58-985b-460d-8f76-c961a40f5255] GET /health -> 200 (0.45ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:c3070682-3b00-439a-9302-8243ecb03937] GET /health -> 200 (0.45ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:37b5c5be-c62b-4db8-acf9-9257efbee503] GET /health -> 200 (0.40ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:08a084aa-bc96-4e2b-b96e-a49b3809f3b8] GET /health -> 200 (0.36ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:19fdd28d-bc1a-4c83-8e9e-cd5ebd26f57e] GET /health -> 200 (0.36ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:23087c55-1694-460f-800c-182350d6fa2f] GET /health -> 200 (0.43ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:6f07f3d7-de6c-476c-9b3e-77c84abbb843] GET /health -> 200 (0.37ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:0b81a548-0537-448e-ae1d-963b43c31e0c] GET /health -> 200 (0.33ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:ef03f9cc-54fd-47ac-8c34-f3982e7a0e67] GET /health -> 200 (0.42ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:5e47aa7e-1f64-47a5-ac01-d0cd6caf006f] GET /health -> 200 (0.40ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:e2544eeb-d87c-4344-91c2-523b5d2eb820] GET /health -> 200 (0.37ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:4be26a44-3f49-4928-8fa3-1fe69fa38c6e] GET /health -> 200 (0.43ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:bea52f41-cb07-42d8-9c4c-60158a232de3] GET /health -> 200 (0.37ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:ace50565-2569-41d4-9096-cd950c442cb6] GET /health -> 200 (0.31ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:3b486bc8-d829-4750-a674-5aade37d74e3] GET /health -> 200 (0.36ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:551e3bcf-afd9-4220-9c21-f000cd86724b] GET /health -> 200 (0.34ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:ff7f21e2-9e91-4364-a3c5-d402692b9554] GET /health -> 200 (0.37ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:fa7e19e1-ebd4-41c9-87a0-4b8e0cb84cf8] GET /health -> 200 (0.72ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:a8abd294-9838-4065-851d-f269f3cd1a11] GET /health -> 200 (0.48ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:9294d64d-4912-4cfc-b266-d302a1c7d198] GET /health -> 200 (0.38ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:f01f46ca-a308-4bc1-9fa4-8ea6a013286f] GET /health -> 200 (0.38ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:0304b912-06b7-439d-a4b8-0458d22b079d] GET /health -> 200 (0.37ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:faebb179-6e21-4106-bc66-648b385d1477] GET /health -> 200 (0.48ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:5aff4dac-80f0-44ba-abf6-7b1f3f5ed7a7] GET /health -> 200 (0.40ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:fa58f6f3-bc8d-4aa2-aae4-ba647f13f414] GET /health -> 200 (0.36ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:a3a34c70-1114-4f06-b7cf-2976ada32127] GET /health -> 200 (0.34ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:f7416df7-f9b3-45e9-8a7b-f6a68e5a0531] GET /health -> 200 (0.38ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:a9d1e2f6-4ba0-4770-9cc9-04e7cc676047] GET /health -> 200 (0.38ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:614be480-f57f-4a2b-b63c-1d981bc9c93c] GET /health -> 200 (0.35ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:e0a565ea-238c-48b4-8d37-07ade364f226] GET /health -> 200 (0.43ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:0659f8fa-939f-47e2-8e33-44dc91725971] GET /health -> 200 (0.37ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:23c6e786-1bdf-4761-a3ef-868bca1d1460] GET /health -> 200 (0.45ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:d9661fa0-26b5-4bbb-a6ab-49b3dd27b07e] GET /health -> 200 (0.42ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:8f36ba07-a025-4255-accc-125962623f61] GET /health -> 200 (0.41ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:e388ddc3-a5ff-4e07-a31a-8020719c78b5] GET /health -> 200 (0.37ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:f8260ea8-d7d7-41b7-98b3-e1fbe7296581] GET /health -> 200 (0.37ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:a813ba4a-8430-4391-9fd6-4df36126ae8e] GET /health -> 200 (0.34ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:eb647048-8cc8-4654-b116-21915f489910] GET /health -> 200 (0.33ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:babda268-c366-4fe6-b17f-08d2d090d6cc] GET /health -> 200 (0.69ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:56cbc0fd-c3dd-4987-abff-72ba0be36357] GET /health -> 200 (0.35ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:cd051115-57bd-4833-8014-2719340c5c90] GET /health -> 200 (0.34ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:24c9a0aa-9826-4364-8d3b-26c5c23ca219] GET /health -> 200 (0.33ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:f459e1a8-aed3-4ea6-a403-afe9617bd5b8] GET /health -> 200 (0.34ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:2348399f-fcc4-4646-a028-117d923fa8a5] GET /health -> 200 (0.33ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:90086cdb-5067-420a-a7f2-6868af25077d] GET /health -> 200 (0.43ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:49dfb2c2-20ad-424c-99a3-9d0978c1630f] GET /health -> 200 (0.40ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:301cca64-a7fa-4d09-b44f-bd893386417b] GET /health -> 200 (0.39ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:2aa33acf-f2ad-4a4e-bd91-9e2e4c41c522] GET /health -> 200 (0.43ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:3a95edf8-cf65-4e0d-af1c-2cb4c567f483] GET /health -> 200 (0.33ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:e5103fd4-9190-40ca-8739-f7952b320e14] GET /health -> 200 (0.48ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:8a0f9ac8-2042-483c-b74c-e7a9e992c26c] GET /health -> 200 (0.43ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:6195bc8b-d3e4-450d-8640-6f952150ce9a] GET /health -> 200 (0.42ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:1619401e-9713-4178-af25-2098deb3f7bf] GET /health -> 200 (0.55ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:bc035a73-ea0a-4b2f-b058-24cc89c8136d] GET /health -> 200 (0.50ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:e330bb62-e4b0-444b-bfc9-0ff2921c5a15] GET /health -> 200 (0.33ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:e15eba77-dd00-4a40-ab0f-d3db57bcb0d1] GET /health -> 200 (0.37ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:84d64456-a511-4138-a865-84d95e55db2d] GET /health -> 200 (0.34ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:31f7a657-7ed2-4e4a-a854-aa977b12068f] GET /health -> 200 (0.33ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:fc94c79a-5408-4117-8eb3-58128b615cae] GET /health -> 200 (0.36ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:09630617-fd33-48f0-8d2d-034cfe97744a] GET /health/extended -> 200 (0.76ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:de342b72-8134-4957-a121-be8856171fcc] GET /health/extended -> 200 (0.59ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:bee160e9-9f28-4e3c-97d4-5b05edb1aeb2] GET /health/extended -> 200 (0.74ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:0782b8ec-c4e6-4fc9-822b-bbba884eb10c] GET /health/extended -> 200 (0.63ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:da06ee57-58cd-4150-ad06-2a2aae302c69] GET /health/extended -> 200 (0.57ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:ba2849ea-0913-450c-982f-bae160600eeb] GET /health/extended -> 200 (0.52ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:c000f788-f73b-458e-84d8-e4df63aa77fb] GET /health/extended -> 200 (0.54ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:e3c87be7-9f12-4be4-b7b6-b2ddf8a51cc6] GET /health/extended -> 200 (0.52ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:95910ab8-f056-4800-b1dd-7d4bbeb3bd03] GET /health/extended -> 200 (0.50ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:241cc0c6-730f-4019-900a-816b3358ed5e] GET /health/extended -> 200 (0.72ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:1d607828-503b-424d-bafc-38fc04becf41] GET /health/extended -> 200 (0.69ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:81f05ae2-8c72-417b-a1a9-88cb81886eae] GET /health/extended -> 200 (0.62ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:713ebe4d-845f-4cd3-b305-1423e2b81991] GET /health/extended -> 200 (0.58ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:f4309a21-6f4a-4eb1-b9cb-e0f393a3f0cc] GET /health/extended -> 200 (0.65ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:9b4dc43d-6ca2-4cb3-bc85-2d2e478c9db1] GET /health/extended -> 200 (0.82ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:58f97180-632f-48ee-a036-aea41b8f21b1] GET /health/extended -> 200 (0.69ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:b9fd3ea2-a065-445a-b52e-d1c90001089b] GET /health/extended -> 200 (0.79ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:06610822-153d-4d23-9e5d-3979c2f9dcb8] GET /health/extended -> 200 (0.62ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:ae56550c-31d6-405f-a48d-3e75505c6fa7] GET /health/extended -> 200 (0.57ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:27d9ce41-6455-459a-8b8b-ebe74827952c] GET /health/extended -> 200 (0.56ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:e53a599d-1fb9-4d74-a12d-faeeedd2c5fd] GET /health/extended -> 200 (0.56ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:b4edd26f-c975-43f4-927f-c0f3ed3cccb6] GET /health/extended -> 200 (0.55ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:eb349213-eee4-45c4-a670-f46d7a852ba6] GET /health/extended -> 200 (0.72ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:cc8d634e-b46e-499e-8ddf-4846cf404454] GET /health/extended -> 200 (0.62ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:f801e804-2895-4edb-8cc0-81cf69e8f87f] GET /health/extended -> 200 (0.67ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:4c96d566-0895-43a6-93f4-44a795370b70] GET /health/extended -> 200 (0.60ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:6697b23c-d91c-455f-906b-9f7911f0e512] GET /health/extended -> 200 (1.05ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:4d9b39ab-6f97-4f4c-83ab-6faa25da5645] GET /health/extended -> 200 (0.76ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:5665e503-4d52-478d-828f-a11430e224de] GET /health/extended -> 200 (0.65ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:1f47b8f3-1c08-4c8d-a73b-cf8259035a34] GET /health/extended -> 200 (0.63ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:3f7302c2-a1a8-4fcf-acf5-5da689578141] GET /health/extended -> 200 (0.60ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:db8070cc-6bb1-48ef-8aac-cfea9ccc280f] GET /health/extended -> 200 (0.61ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:35225296-bfe7-4cba-b25d-0e877a52e430] GET /health/extended -> 200 (0.66ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:7446df3c-f36d-442d-84f2-2afed2c52ca7] GET /health/extended -> 200 (0.67ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:7ef4fe2e-9da5-4cb8-b7f9-c6e6b23c86df] GET /health/extended -> 200 (0.60ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:b0e09d7d-738e-40d6-a1b3-7f521fc15f05] GET /health/extended -> 200 (0.51ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:fcf88261-766c-4270-8659-19f9740d2037] GET /health/extended -> 200 (0.50ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:cd87a491-e0e8-49ba-bd42-b19b897e094f] GET /health/extended -> 200 (0.60ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:6d14c067-1f45-4b00-849a-ddcd35995c26] GET /health/extended -> 200 (0.54ms)
+2026-09-27 19:51:09 | INFO    | [contractiq.api] [req:707f7546-9b71-4090-9cbb-6b93cacb7a36] GET /health/extended -> 200 (0.55ms)
+2026-09-27 19:51:10 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-09-27 19:51:10 | WARNING | [huggingface_hub.utils._http] [req:-] Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-09-27 19:51:10 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-09-27 19:51:10 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-09-27 19:51:10 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-09-27 19:51:10 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-09-27 19:51:10 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/modules.json "HTTP/1.1 200 OK"
+2026-09-27 19:51:10 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/modules.json "HTTP/1.1 200 OK"
+2026-09-27 19:51:10 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/modules.json "HTTP/1.1 200 OK"
+2026-09-27 19:51:10 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/modules.json "HTTP/1.1 200 OK"
+2026-09-27 19:51:10 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-09-27 19:51:10 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-09-27 19:51:10 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-09-27 19:51:10 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-09-27 19:51:10 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-09-27 19:51:10 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-09-27 19:51:10 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-09-27 19:51:10 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-09-27 19:51:11 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/modules.json "HTTP/1.1 200 OK"
+2026-09-27 19:51:11 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-09-27 19:51:11 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-09-27 19:51:11 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-09-27 19:51:11 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-09-27 19:51:11 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-09-27 19:51:11 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-09-27 19:51:11 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-09-27 19:51:11 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-09-27 19:51:11 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-09-27 19:51:11 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-09-27 19:51:11 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-09-27 19:51:11 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-09-27 19:51:11 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/README.md "HTTP/1.1 200 OK"
+2026-09-27 19:51:11 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-09-27 19:51:11 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/README.md "HTTP/1.1 200 OK"
+2026-09-27 19:51:11 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/README.md "HTTP/1.1 200 OK"
+2026-09-27 19:51:11 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/README.md "HTTP/1.1 200 OK"
+2026-09-27 19:51:11 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-09-27 19:51:12 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-09-27 19:51:12 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-09-27 19:51:12 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-09-27 19:51:12 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-09-27 19:51:12 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/modules.json "HTTP/1.1 200 OK"
+2026-09-27 19:51:12 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/modules.json "HTTP/1.1 200 OK"
+2026-09-27 19:51:12 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/modules.json "HTTP/1.1 200 OK"
+2026-09-27 19:51:12 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/modules.json "HTTP/1.1 200 OK"
+2026-09-27 19:51:12 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-09-27 19:51:12 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-09-27 19:51:12 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/sentence_bert_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-09-27 19:51:12 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/sentence_bert_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-09-27 19:51:12 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/sentence_bert_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-09-27 19:51:12 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/sentence_bert_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-09-27 19:51:12 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/sentence_bert_config.json "HTTP/1.1 200 OK"
+2026-09-27 19:51:12 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/sentence_bert_config.json "HTTP/1.1 200 OK"
+2026-09-27 19:51:12 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-09-27 19:51:12 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/sentence_bert_config.json "HTTP/1.1 200 OK"
+2026-09-27 19:51:12 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/sentence_bert_config.json "HTTP/1.1 200 OK"
+2026-09-27 19:51:12 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/README.md "HTTP/1.1 200 OK"
+2026-09-27 19:51:12 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/adapter_config.json "HTTP/1.1 404 Not Found"
+2026-09-27 19:51:12 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/adapter_config.json "HTTP/1.1 404 Not Found"
+2026-09-27 19:51:12 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/adapter_config.json "HTTP/1.1 404 Not Found"
+2026-09-27 19:51:12 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/adapter_config.json "HTTP/1.1 404 Not Found"
+2026-09-27 19:51:12 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-09-27 19:51:13 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/modules.json "HTTP/1.1 200 OK"
+2026-09-27 19:51:13 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-09-27 19:51:13 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-09-27 19:51:13 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-09-27 19:51:13 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-09-27 19:51:13 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+2026-09-27 19:51:13 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+2026-09-27 19:51:13 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+2026-09-27 19:51:13 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+2026-09-27 19:51:13 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/sentence_bert_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-09-27 19:51:13 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/sentence_bert_config.json "HTTP/1.1 200 OK"
+2026-09-27 19:51:13 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/adapter_config.json "HTTP/1.1 404 Not Found"
+2026-09-27 19:51:13 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/processor_config.json "HTTP/1.1 404 Not Found"
+2026-09-27 19:51:13 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/processor_config.json "HTTP/1.1 404 Not Found"
+2026-09-27 19:51:13 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/processor_config.json "HTTP/1.1 404 Not Found"
+2026-09-27 19:51:13 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/processor_config.json "HTTP/1.1 404 Not Found"
+2026-09-27 19:51:14 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-09-27 19:51:14 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-09-27 19:51:14 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-09-27 19:51:14 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-09-27 19:51:14 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-09-27 19:51:14 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+2026-09-27 19:51:14 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/video_preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-09-27 19:51:14 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/video_preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-09-27 19:51:14 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/video_preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-09-27 19:51:14 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/video_preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-09-27 19:51:14 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/processor_config.json "HTTP/1.1 404 Not Found"
+2026-09-27 19:51:14 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-09-27 19:51:14 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-09-27 19:51:14 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-09-27 19:51:14 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-09-27 19:51:14 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-09-27 19:51:14 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-09-27 19:51:14 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-09-27 19:51:14 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-09-27 19:51:14 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-09-27 19:51:15 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/video_preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-09-27 19:51:15 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-09-27 19:51:15 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-09-27 19:51:15 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-09-27 19:51:15 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-09-27 19:51:15 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-09-27 19:51:15 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-09-27 19:51:15 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-09-27 19:51:15 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-09-27 19:51:15 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-09-27 19:51:15 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+2026-09-27 19:51:15 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+2026-09-27 19:51:15 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+2026-09-27 19:51:15 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+2026-09-27 19:51:15 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-09-27 19:51:15 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-09-27 19:51:15 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-09-27 19:51:15 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-09-27 19:51:15 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-09-27 19:51:15 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-09-27 19:51:15 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+2026-09-27 19:51:15 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+2026-09-27 19:51:15 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+2026-09-27 19:51:15 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+2026-09-27 19:51:16 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-09-27 19:51:16 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+2026-09-27 19:51:16 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-09-27 19:51:16 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-09-27 19:51:16 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-09-27 19:51:16 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-09-27 19:51:16 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-09-27 19:51:16 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-09-27 19:51:16 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-09-27 19:51:16 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-09-27 19:51:16 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-09-27 19:51:16 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+2026-09-27 19:51:16 | INFO    | [httpx] [req:-] HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-09-27 19:51:16 | INFO    | [httpx] [req:-] HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-09-27 19:51:16 | INFO    | [httpx] [req:-] HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-09-27 19:51:16 | INFO    | [httpx] [req:-] HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-09-27 19:51:16 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-09-27 19:51:16 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-09-27 19:51:16 | INFO    | [httpx] [req:-] HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-09-27 19:51:16 | INFO    | [httpx] [req:-] HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-09-27 19:51:16 | INFO    | [httpx] [req:-] HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-09-27 19:51:16 | INFO    | [httpx] [req:-] HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-09-27 19:51:17 | INFO    | [httpx] [req:-] HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-09-27 19:51:17 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/1_Pooling/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-09-27 19:51:17 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/1_Pooling/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-09-27 19:51:17 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/1_Pooling%2Fconfig.json "HTTP/1.1 200 OK"
+2026-09-27 19:51:17 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/1_Pooling%2Fconfig.json "HTTP/1.1 200 OK"
+2026-09-27 19:51:17 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/1_Pooling/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-09-27 19:51:17 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/1_Pooling/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-09-27 19:51:17 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/1_Pooling%2Fconfig.json "HTTP/1.1 200 OK"
+2026-09-27 19:51:17 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/1_Pooling%2Fconfig.json "HTTP/1.1 200 OK"
+2026-09-27 19:51:17 | INFO    | [httpx] [req:-] HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-09-27 19:51:17 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/2_Normalize/config.json "HTTP/1.1 404 Not Found"
+2026-09-27 19:51:17 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/2_Normalize/config.json "HTTP/1.1 404 Not Found"
+2026-09-27 19:51:17 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/2_Normalize/config.json "HTTP/1.1 404 Not Found"
+2026-09-27 19:51:17 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/2_Normalize/config.json "HTTP/1.1 404 Not Found"
+2026-09-27 19:51:17 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/1_Pooling/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-09-27 19:51:17 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/1_Pooling%2Fconfig.json "HTTP/1.1 200 OK"
+2026-09-27 19:51:17 | INFO    | [httpx] [req:-] HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2 "HTTP/1.1 200 OK"
+2026-09-27 19:51:17 | INFO    | [httpx] [req:-] HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2 "HTTP/1.1 200 OK"
+2026-09-27 19:51:17 | INFO    | [contractiq.api] [req:030d2481-6f16-4010-8a63-5af252ae6e23] POST /api/search/semantic -> 200 (8341.92ms)
+2026-09-27 19:51:17 | INFO    | [contractiq.api] [req:6721cae1-9c0c-4be0-87dc-1802af1071a3] POST /api/search/semantic -> 200 (8346.55ms)
+2026-09-27 19:51:17 | INFO    | [contractiq.api] [req:9eda55a9-030d-4be0-bc96-8af4a027e346] POST /api/search/semantic -> 200 (16.21ms)
+2026-09-27 19:51:17 | INFO    | [contractiq.api] [req:0e5b5dec-ad03-4192-a3f2-0472108ac822] POST /api/search/semantic -> 200 (18.04ms)
+2026-09-27 19:51:17 | INFO    | [httpx] [req:-] HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2 "HTTP/1.1 200 OK"
+2026-09-27 19:51:17 | INFO    | [contractiq.api] [req:fddd4efe-0eb8-42ad-9277-e6b52d666739] POST /api/search/semantic -> 200 (27.21ms)
+2026-09-27 19:51:17 | INFO    | [contractiq.api] [req:b6bef973-4d8b-43bb-8a52-73b5249094e5] POST /api/search/semantic -> 200 (8399.00ms)
+2026-09-27 19:51:17 | INFO    | [contractiq.api] [req:28adad0e-dbd5-47d5-b3ef-d4615ce9da34] POST /api/search/semantic -> 200 (26.61ms)
+2026-09-27 19:51:17 | INFO    | [httpx] [req:-] HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2 "HTTP/1.1 200 OK"
+2026-09-27 19:51:17 | INFO    | [contractiq.api] [req:241ada02-f86a-45fd-a92c-4ec552f2f189] POST /api/search/semantic -> 200 (42.74ms)
+2026-09-27 19:51:17 | INFO    | [contractiq.api] [req:2b2746da-8757-4495-9e00-7e727f3aa7f8] POST /api/search/semantic -> 200 (47.31ms)
+2026-09-27 19:51:17 | INFO    | [contractiq.api] [req:82f02440-70ec-4d80-a17d-8938668c36db] POST /api/search/semantic -> 200 (48.56ms)
+2026-09-27 19:51:17 | INFO    | [contractiq.api] [req:ef61d822-7092-42c4-b597-45a6430863e7] POST /api/search/semantic -> 200 (8495.79ms)
+2026-09-27 19:51:17 | INFO    | [contractiq.api] [req:cae9321d-6387-4817-bee1-8c95cca5cd5f] POST /api/search/semantic -> 200 (39.00ms)
+2026-09-27 19:51:18 | INFO    | [contractiq.api] [req:51d82d57-1077-4e6c-9b91-98d4ee294267] POST /api/search/semantic -> 200 (35.80ms)
+2026-09-27 19:51:18 | INFO    | [contractiq.api] [req:cbeb5e14-7f6e-45a0-b526-7f1d7af4f07b] POST /api/search/semantic -> 200 (38.65ms)
+2026-09-27 19:51:18 | INFO    | [contractiq.api] [req:21394aa0-01cd-4aae-8315-b58caa7daa68] POST /api/search/semantic -> 200 (31.87ms)
+2026-09-27 19:51:18 | INFO    | [httpx] [req:-] HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/2_Normalize/config.json "HTTP/1.1 404 Not Found"
+2026-09-27 19:51:18 | INFO    | [contractiq.api] [req:a413a6e7-6622-4e80-9c23-42a477f4d18b] POST /api/search/semantic -> 200 (38.35ms)
+2026-09-27 19:51:18 | INFO    | [contractiq.api] [req:1e316549-8d94-43fd-a26c-c15803e6eb9a] POST /api/search/semantic -> 200 (33.16ms)
+2026-09-27 19:51:18 | INFO    | [contractiq.api] [req:77eedec3-8d5f-4737-85f7-a80b9488f8ee] POST /api/search/semantic -> 200 (36.89ms)
+2026-09-27 19:51:18 | INFO    | [contractiq.api] [req:8a59890e-1b5f-42e6-a92e-f3c947af5d61] POST /api/search/semantic -> 200 (19.59ms)
+2026-09-27 19:51:18 | INFO    | [contractiq.api] [req:ddd22f9b-4e5f-4760-a9a2-bfccffb95f31] POST /api/search/semantic -> 200 (35.62ms)
+2026-09-27 19:51:18 | INFO    | [contractiq.api] [req:0f8028d2-0da2-47b3-b883-269a5625970e] POST /api/search/semantic -> 200 (34.07ms)
+2026-09-27 19:51:18 | INFO    | [contractiq.api] [req:a11244d6-e823-4198-b131-439a5efcb02d] POST /api/search/semantic -> 200 (36.11ms)
+2026-09-27 19:51:18 | INFO    | [contractiq.api] [req:be7e1055-40c5-4673-9e7a-d8ca77b1f807] POST /api/search/semantic -> 200 (27.51ms)
+2026-09-27 19:51:18 | INFO    | [contractiq.api] [req:2fdd7a46-e716-43fb-98e4-6418e1fec799] POST /api/search/semantic -> 200 (27.56ms)
+2026-09-27 19:51:18 | INFO    | [contractiq.api] [req:359b9d88-ff9b-4c08-8a51-2030cd1b16ec] POST /api/search/semantic -> 200 (32.69ms)
+2026-09-27 19:51:18 | INFO    | [contractiq.api] [req:a4d2779d-ad3c-45e9-b402-ea1f8437d0ba] POST /api/search/semantic -> 200 (33.24ms)
+2026-09-27 19:51:18 | INFO    | [contractiq.api] [req:b4a7b70a-fe87-45a0-bf6c-6f8d26c7f09a] POST /api/search/semantic -> 200 (36.32ms)
+2026-09-27 19:51:18 | INFO    | [contractiq.api] [req:bb290155-5017-4648-be26-b48d5a264f54] POST /api/search/semantic -> 200 (33.00ms)
+2026-09-27 19:51:18 | INFO    | [contractiq.api] [req:ba0f2e02-0b60-4a49-b4f6-d61ef0e9ce03] POST /api/search/semantic -> 200 (28.88ms)
+2026-09-27 19:51:18 | INFO    | [contractiq.api] [req:fec6f543-1ad4-4ab5-80c4-a97a64f89ba0] POST /api/search/semantic -> 200 (34.89ms)
+2026-09-27 19:51:18 | INFO    | [contractiq.api] [req:b611248f-5208-4fd0-b954-123b62903851] POST /api/search/semantic -> 200 (34.16ms)
+2026-09-27 19:51:18 | INFO    | [contractiq.api] [req:45a77761-c983-49be-b75a-953f4261d8a8] POST /api/search/semantic -> 200 (34.72ms)
+2026-09-27 19:51:18 | INFO    | [contractiq.api] [req:b90f7101-bb21-45de-8276-88de97d171e0] POST /api/search/semantic -> 200 (33.63ms)
+2026-09-27 19:51:18 | INFO    | [contractiq.api] [req:f7817231-83cb-4a97-b4fa-e839de484c30] POST /api/search/semantic -> 200 (34.65ms)
+2026-09-27 19:51:18 | INFO    | [contractiq.api] [req:c72d93ef-56ce-431a-9367-e21f9d88d421] POST /api/search/semantic -> 200 (33.84ms)
+2026-09-27 19:51:18 | INFO    | [contractiq.api] [req:867a49d9-b020-4eb8-98ed-144a1b2ce171] POST /api/search/semantic -> 200 (28.58ms)
+2026-09-27 19:51:18 | INFO    | [contractiq.api] [req:f1378de6-48ed-41d3-811f-06700b73188e] POST /api/search/semantic -> 200 (33.73ms)
+2026-09-27 19:51:18 | INFO    | [contractiq.api] [req:04d4b715-97e2-4425-9ba5-e8e42aece360] POST /api/search/semantic -> 200 (24.40ms)
+2026-09-27 19:51:18 | INFO    | [contractiq.api] [req:5febf878-aa81-4b17-bc6b-cfdd562d3799] POST /api/search/semantic -> 200 (23.04ms)
+2026-09-27 19:51:18 | INFO    | [httpx] [req:-] HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2 "HTTP/1.1 200 OK"
+2026-09-27 19:51:18 | INFO    | [contractiq.api] [req:5310ed91-8c74-462f-9dd1-3dd3b1defb54] POST /api/search/semantic -> 200 (8844.75ms)
+2026-09-27 19:51:18 | INFO    | [contractiq.api] [req:fcbfcb3b-244a-4370-80e1-940862422279] POST /api/contracts/upload -> 201 (2.66ms)
+2026-09-27 19:51:18 | INFO    | [contractiq.api] [req:cfd69f46-3800-4bbf-b299-7f99714f5ffe] POST /api/contracts/ctr_40e2f4dc19c0/analyze -> 200 (0.83ms)
+2026-09-27 19:51:18 | INFO    | [contractiq.api] [req:-] Starting background contract analysis for contract ctr_40e2f4dc19c0 (benchmark_contract_0.txt)
+2026-09-27 19:51:18 | INFO    | [contractiq.api] [req:906ea186-3feb-401b-b4e3-4341e48cebaf] POST /api/contracts/upload -> 201 (1.68ms)
+2026-09-27 19:51:18 | INFO    | [contractiq.api] [req:19a33d0a-13fd-4fe9-b740-cf7f7b47f373] POST /api/contracts/ctr_b12744795265/analyze -> 200 (0.44ms)
+2026-09-27 19:51:18 | INFO    | [contractiq.api] [req:-] Starting background contract analysis for contract ctr_b12744795265 (benchmark_contract_1.txt)
+2026-09-27 19:51:18 | INFO    | [contractiq.api] [req:8c4d93a8-d30d-4367-939f-36b0467d4c6e] POST /api/contracts/upload -> 201 (1.94ms)
+2026-09-27 19:51:18 | INFO    | [contractiq.api] [req:d75d5bfe-22a2-429b-b478-506c5488c439] POST /api/contracts/ctr_12cf608bf993/analyze -> 200 (0.42ms)
+2026-09-27 19:51:18 | INFO    | [contractiq.api] [req:-] Starting background contract analysis for contract ctr_12cf608bf993 (benchmark_contract_2.txt)
+2026-09-27 19:51:19 | INFO    | [contractiq.api] [req:-] Completed analysis for ctr_b12744795265 in 0.98s [Risk Score: 22, Level: LOW]
+2026-09-27 19:51:19 | INFO    | [contractiq.api] [req:-] Completed analysis for ctr_40e2f4dc19c0 in 1.00s [Risk Score: 22, Level: LOW]
+2026-09-27 19:51:19 | INFO    | [contractiq.api] [req:-] Completed analysis for ctr_12cf608bf993 in 0.97s [Risk Score: 22, Level: LOW]
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:08746e92-dc67-4484-a2c3-22a0a7d1d031] GET /health -> 200 (4.55ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:b37d4e61-3cc5-443a-908d-a98302f6a75d] GET /health -> 200 (4.82ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:00bd690a-1ac0-48b7-b6b8-37b05e72a87c] GET /health -> 200 (4.87ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:438a6866-6ca5-400e-8382-29af4963735b] GET /health -> 200 (5.47ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:17634b44-762c-4e23-93d0-d06e203e473d] GET /health -> 200 (5.14ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:92f2dbb8-d553-4c30-b844-16696ba8ed59] GET /health -> 200 (5.25ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:6b8b6472-1724-4cbc-b826-50a753c285c5] GET /health -> 200 (5.37ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:87266729-df2a-4d90-8320-59aef7414738] GET /health -> 200 (4.85ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:3bb0c9d6-e9d2-4f12-b40a-84550efbd054] GET /health -> 200 (5.02ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:958e5f21-f521-4eb7-b8fb-d31451f98c26] GET /health -> 200 (4.40ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:08e0ba8e-4c13-4c86-8ef9-b826f1f2ae64] GET /health -> 200 (0.44ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:7648fc5c-ddca-47d3-b43d-50576d01c1d5] GET /health -> 200 (0.49ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:b0c89513-61ec-4331-9ca4-5a201584b7ec] GET /health -> 200 (0.40ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:baa780f6-0aad-4928-971d-abae3bd28f17] GET /health -> 200 (0.42ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:f49026d6-c670-4598-8cd9-2d4e94c5193f] GET /health -> 200 (0.43ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:fc7db9c6-ea45-47ea-a5c4-b702046fc201] GET /health -> 200 (0.33ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:be27cf59-7fed-41bf-889b-77f5253e322b] GET /health -> 200 (0.31ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:a78594bf-06f4-48ba-bda3-42f17449ffc7] GET /health -> 200 (0.45ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:613dc8db-f6b5-42e5-95a9-3dc56e027e06] GET /health -> 200 (0.39ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:caabd3ff-652c-4573-9fb4-d90e6bde15b1] GET /health -> 200 (0.44ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:4cc2b687-0639-4043-aa6d-0986d282fca7] GET /health -> 200 (0.53ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:4b61edd3-8824-401c-9dd6-590c8dc9c492] GET /health -> 200 (0.38ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:4b099a02-e2e2-46c4-a68a-cdc571f6bdf4] GET /health -> 200 (0.47ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:8b1b495f-bd6b-484f-bc11-79ab2697b7e1] GET /health -> 200 (0.42ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:4b49397c-9335-430d-bfdf-3a4d0b83d5ff] GET /health -> 200 (0.42ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:ebb46254-54d9-4ad6-9671-b057954152c3] GET /health -> 200 (0.54ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:cfe81dd7-1531-4e02-8965-1da74bd6c840] GET /health -> 200 (0.58ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:85f435e1-ad9f-47e5-9aa0-2ed1fedb1689] GET /health -> 200 (0.40ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:701d5cfc-08d1-43be-8a0c-d03d5179a8c6] GET /health -> 200 (0.40ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:85629f1e-6c13-4de8-8bd7-47ad6740b74e] GET /health -> 200 (0.36ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:5767b976-9af6-489b-82a4-8d58a6a33aa3] GET /health -> 200 (0.43ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:b893ba1e-7e8c-4824-8467-29e0f22680db] GET /health -> 200 (0.43ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:115c9565-4570-4bd4-8f76-34ffab64f9df] GET /health -> 200 (0.36ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:ea1bfbf5-6b36-4c6e-a60b-e13f8ccfbcb6] GET /health -> 200 (0.33ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:0f63baf7-f254-4c23-9afb-ad21bc0bc50a] GET /health -> 200 (0.38ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:afcd3f8f-35ed-4b72-bf85-0ad474074711] GET /health -> 200 (0.32ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:3500fa1f-fd88-488d-b863-acd5937b02fa] GET /health -> 200 (0.30ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:32019de0-0ac6-4375-b296-c2406a506c40] GET /health -> 200 (0.41ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:20f5a6a4-17df-492a-bb47-01ebb3e7f998] GET /health -> 200 (0.37ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:19ac3906-9f7e-4094-bbbc-6303574ceb8b] GET /health -> 200 (0.42ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:0b0a15de-a458-4511-ae3f-8cc1e87da722] GET /health -> 200 (0.39ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:15f3929c-0921-4433-a507-a9f8945e1753] GET /health -> 200 (0.35ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:0169bc64-5264-4505-96eb-0ed86d84db5b] GET /health -> 200 (0.40ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:7b915cfd-bce8-4396-8ea6-2baab5a57efe] GET /health -> 200 (0.39ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:de61aec2-699f-4f18-9702-a2ca60a36126] GET /health -> 200 (0.34ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:9dd9e617-f21c-4480-966e-e271263f6ed0] GET /health -> 200 (0.34ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:8d4e712c-81c1-4e28-be2d-f6ad4483dad2] GET /health -> 200 (0.34ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:3200d65e-7250-4f01-9ab8-38eec753789e] GET /health -> 200 (0.36ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:7feac64a-88cd-4c5b-a4d1-b1f21e212b0e] GET /health -> 200 (0.30ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:531a44b9-3d85-41d5-98e9-9b727ebc7c3d] GET /health -> 200 (0.45ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:45cc689a-3077-4425-a8fe-58c4df2c2efb] GET /health -> 200 (0.49ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:b8ebc029-8401-4353-9d2a-8f98926e9333] GET /health -> 200 (0.39ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:c7ffff26-a546-4da2-b15e-5077cf6df316] GET /health -> 200 (0.34ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:d466a56e-af95-4f27-a081-567c5b8468e1] GET /health -> 200 (0.37ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:7d881d02-c892-4200-acb4-76f003fb488b] GET /health -> 200 (0.41ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:04bbbf58-eb39-4264-adfa-b5336892ba28] GET /health -> 200 (0.33ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:e4544abe-44f5-4fff-91d2-313dbb256d53] GET /health -> 200 (0.33ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:b4030898-fef3-4576-9cfa-0e9c90dd5190] GET /health -> 200 (0.35ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:0451b017-7523-41d6-a930-42768e626f37] GET /health -> 200 (0.40ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:5866b319-ce3f-4da0-aac1-024dc89b645d] GET /health -> 200 (0.40ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:910d6216-e6ea-4218-8ee3-21f39156596a] GET /health -> 200 (0.40ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:50e3891b-a4db-4eea-8aaf-31e7a708b9c2] GET /health -> 200 (0.37ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:0674351a-6fd7-4e06-a4d3-ed63b10fec9f] GET /health -> 200 (0.39ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:95f3ddd3-dda0-4947-bed4-20be36c60f98] GET /health -> 200 (0.39ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:26194815-7f23-4156-8a81-8551221e143a] GET /health -> 200 (0.37ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:bbb341d9-59ef-4dbf-a7d8-8fc78f5e1dd4] GET /health -> 200 (0.37ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:23a50b14-9c50-4cd0-98da-67dfd8670797] GET /health -> 200 (0.34ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:5c818757-236b-434b-8b49-836367066ca4] GET /health -> 200 (0.49ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:d7d50f20-e2be-4f0a-8c51-3c3a46366d06] GET /health -> 200 (0.42ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:38e20570-c98c-4b39-aaaa-fc739445c3d7] GET /health -> 200 (0.42ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:a914e8df-8da4-4bed-ba6f-44465ed5bf02] GET /health -> 200 (0.37ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:0fe4fc6c-a3ba-4118-9bc8-28d31458dcc6] GET /health -> 200 (0.43ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:5ea9c814-124a-468f-8260-3dd5d9eafc34] GET /health -> 200 (0.47ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:2df94074-9ef9-4f73-9c28-51b22cfc6769] GET /health -> 200 (0.31ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:2d69cb2b-bcce-437a-936d-7d1a21a7f575] GET /health -> 200 (0.44ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:accfaba8-3180-4e4f-862e-d1f994fd5390] GET /health -> 200 (0.41ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:f92978fc-8799-4dc1-85f4-30f158aa5220] GET /health -> 200 (0.42ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:2cf5c063-2e9d-45bf-8845-ee639804987a] GET /health -> 200 (1.12ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:9b546ac5-d35a-42b3-8d83-591de2551d71] GET /health -> 200 (0.45ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:d93d3b7d-1b95-49b1-8785-c9fa5089119d] GET /health -> 200 (0.43ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:17c495d5-86ab-46bf-bfd1-d585dfed7a85] GET /health -> 200 (0.37ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:0962738e-728c-4e3b-bf49-c46579251861] GET /health -> 200 (0.35ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:a34ede70-836c-4ef7-a6d0-582764a5eec6] GET /health -> 200 (0.45ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:0e384e23-4c51-456a-a359-511b497e65bc] GET /health -> 200 (0.36ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:4961f9f4-7055-4d55-90e5-ed13ff21f0bf] GET /health -> 200 (0.34ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:665792cb-2794-479b-a8fc-71f0cf812572] GET /health -> 200 (0.48ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:db0ce38a-6e6e-40b5-8a29-fa7b334f5a09] GET /health -> 200 (0.43ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:dc6a53d3-d619-4109-8065-1c161bfb9438] GET /health -> 200 (0.44ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:ba8da61b-d060-40d2-b962-02a9535b5155] GET /health -> 200 (0.38ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:6fc005c2-b3ca-4e9f-ae03-d255fba5bdfc] GET /health -> 200 (0.39ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:51d13d13-3e94-43bf-8766-2afa922df3b8] GET /health -> 200 (0.42ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:fe81b6bc-9c37-4b06-b83d-0f173ddfb3d4] GET /health -> 200 (0.43ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:5e4c72c5-b401-47e7-b031-f1955037c91d] GET /health -> 200 (0.46ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:6a141f7f-ad67-44ae-b982-68e15bf4f00a] GET /health -> 200 (0.40ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:beae489f-eef2-40eb-8048-78c3125579a6] GET /health -> 200 (0.36ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:3865969c-b008-4fb9-921b-a84ca1442783] GET /health -> 200 (0.39ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:77a91ba1-733d-4b2d-bbc4-f8dff6bd6127] GET /health -> 200 (0.33ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:4a3edaea-5c12-4fbd-b693-bc59ca90d81e] GET /health -> 200 (0.53ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:f6664b38-c881-48b0-aa7a-0aad94f7d19c] GET /health -> 200 (0.40ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:9af1031f-bc7d-486a-8d90-df30e7990a3f] GET /health -> 200 (0.58ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:df2f3169-a43a-438b-89a8-c3458c4bc681] GET /health/extended -> 200 (0.84ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:4ba984a5-41c3-4819-b801-cbb8c0f054ad] GET /health/extended -> 200 (0.73ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:f5c5b045-d58e-495b-a090-8125205ff504] GET /health/extended -> 200 (0.71ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:66145fec-624e-4e1f-a19b-1cbb63fb2025] GET /health/extended -> 200 (0.67ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:0c139802-83d4-4b44-91a0-46965d6d4e24] GET /health/extended -> 200 (0.56ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:0546d69f-b0c8-444a-91d7-447397a8db63] GET /health/extended -> 200 (0.60ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:0f051f5d-c943-45f9-9eed-008d9a668535] GET /health/extended -> 200 (0.60ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:2dcc9404-5676-4140-9ae2-d1d2a4b6ea5b] GET /health/extended -> 200 (0.59ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:5aa92842-f85f-44fa-82e7-65364baae2b9] GET /health/extended -> 200 (0.62ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:982e8c8d-c166-42d8-96c4-c3b3ecc9a9bf] GET /health/extended -> 200 (0.64ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:826ba810-b525-422c-ae53-af907b379193] GET /health/extended -> 200 (0.67ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:a4b9d9c8-4edb-49cd-9d50-6aed3fdc5bdd] GET /health/extended -> 200 (0.65ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:f36ef044-3309-4d2c-ad31-aebba07d524c] GET /health/extended -> 200 (0.73ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:2aa2ba6c-9709-4718-9efc-46654265a97f] GET /health/extended -> 200 (0.65ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:7b129073-8b6d-40b3-9cf3-780037b48a43] GET /health/extended -> 200 (0.56ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:29c1d4a1-70b7-48bf-8a70-cf170c80dfec] GET /health/extended -> 200 (0.54ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:6e02ddf0-1d0c-49f2-a209-6f2cb0e3590b] GET /health/extended -> 200 (0.62ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:384a4d8f-63fd-4905-90a0-097b278f3054] GET /health/extended -> 200 (0.58ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:aab45cd4-86ef-40dd-8486-f5b9b3c26014] GET /health/extended -> 200 (0.59ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:ab16c812-8807-4e59-b858-3846fef78cd4] GET /health/extended -> 200 (0.60ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:e9818780-3b1b-44ed-8d33-6f2cac7769e8] GET /health/extended -> 200 (0.61ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:68cfe2d3-1225-4ddc-b63e-68b547fc1b1f] GET /health/extended -> 200 (0.61ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:2e02bfc3-55e6-4556-8d46-69711c5068e1] GET /health/extended -> 200 (0.60ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:8aafa527-8fce-465b-8dec-b8baae48b974] GET /health/extended -> 200 (0.58ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:04024f67-679e-47ab-bcd5-f5c49de5752d] GET /health/extended -> 200 (0.56ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:eec7087a-ccc3-48b0-819f-adac1c9d5845] GET /health/extended -> 200 (0.57ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:26a4c28b-328b-47f1-9fa4-fc736a72fcd2] GET /health/extended -> 200 (0.66ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:bc732cb6-4b93-42a5-b49e-792d2b093834] GET /health/extended -> 200 (0.88ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:b1f8b04b-0f2c-4efd-b3ec-1f921cfce706] GET /health/extended -> 200 (0.98ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:1272f054-1342-427e-a251-6cf3a72854e3] GET /health/extended -> 200 (0.56ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:ecb782aa-8b63-4282-9dbc-68aac9d5ae00] GET /health/extended -> 200 (0.58ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:9a3141dc-ec5f-4de6-b5fd-b2b19543d0a7] GET /health/extended -> 200 (0.54ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:e621e1ce-a9aa-4c57-b215-710845c20828] GET /health/extended -> 200 (0.61ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:5b3e095c-8cc4-40e2-bc76-396ae6e75f37] GET /health/extended -> 200 (0.57ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:c598c31e-a258-4891-87ff-2835b5a96d1c] GET /health/extended -> 200 (0.57ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:8d03ef43-bd92-4493-9b96-242165741a7b] GET /health/extended -> 200 (0.51ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:15968b81-50d4-4a97-9e5b-dca3556925dd] GET /health/extended -> 200 (0.52ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:9a6d154c-c08b-4fbf-aa2e-48cf9b8a37ec] GET /health/extended -> 200 (0.57ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:e5d64c90-a1a9-4019-b650-9699530054eb] GET /health/extended -> 200 (0.76ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:8d8d6642-8889-4e15-8f4e-1c3f83b25b41] GET /health/extended -> 200 (0.88ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:1021f42e-711f-4974-abcd-5c6ceba01379] POST /api/search/semantic -> 200 (35.39ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:043b242d-89dc-4c47-b71b-30ea4f5a5566] POST /api/search/semantic -> 200 (46.46ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:61f9757d-b1a7-4ecd-80da-d5804c1ba620] POST /api/search/semantic -> 200 (42.72ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:1b831db4-e74d-4c3a-82d0-ecca93d6b426] POST /api/search/semantic -> 200 (48.19ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:bf3559c4-0e79-408d-ab15-fe0c391f9438] POST /api/search/semantic -> 200 (47.31ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:a7255622-546e-4a5e-8a5c-30735252782b] POST /api/search/semantic -> 200 (44.05ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:7f32c256-1704-497e-8cf8-c570bb0a6196] POST /api/search/semantic -> 200 (36.30ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:9903664f-5ebc-44cd-93d1-0ed9647a50b8] POST /api/search/semantic -> 200 (44.21ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:428568d6-7d27-47b4-837c-f039cc18431b] POST /api/search/semantic -> 200 (52.92ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:917befae-bbe2-4c18-8764-61c5c3428fc3] POST /api/search/semantic -> 200 (50.35ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:809afdcf-282a-44c0-bc44-971dc40de10d] POST /api/search/semantic -> 200 (47.25ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:dbf83a5d-f594-42bc-a214-35c68a09190f] POST /api/search/semantic -> 200 (47.69ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:23b4a08e-a3bb-44bd-8be1-da7e8427eb74] POST /api/search/semantic -> 200 (48.09ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:e869ae52-cd3f-4605-83d9-a8ed49ef14f5] POST /api/search/semantic -> 200 (49.03ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:c70d882c-991f-4698-b476-ba46e511974c] POST /api/search/semantic -> 200 (54.13ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:a7ed0cfc-b934-48ef-bb63-cd025dde4b2b] POST /api/search/semantic -> 200 (43.04ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:e50221a7-b775-4cef-9f8b-bc7f72866f48] POST /api/search/semantic -> 200 (49.61ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:c71a9760-08b2-4d81-b95e-33dc835fd4c1] POST /api/search/semantic -> 200 (47.54ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:61760666-ac2a-4419-839f-cb90a2d44891] POST /api/search/semantic -> 200 (46.30ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:c5972305-0cc3-4258-9c1e-141d32a25535] POST /api/search/semantic -> 200 (52.39ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:3914888a-5557-4ef0-9300-1d5c9811bab1] POST /api/search/semantic -> 200 (47.17ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:c5ab4d05-6d09-44e3-ad0d-11dd71973aa4] POST /api/search/semantic -> 200 (46.90ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:8d359e5d-dbbf-48ca-8d42-9b34356daeb4] POST /api/search/semantic -> 200 (45.48ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:7f985476-186b-487e-99c0-adf86f147638] POST /api/search/semantic -> 200 (44.95ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:b781062b-8853-4d37-b2ab-b10807811ff0] POST /api/search/semantic -> 200 (47.37ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:fdfd23e4-ad53-44d1-97c6-c0a8bd15c16b] POST /api/search/semantic -> 200 (44.95ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:fa493bdd-21a9-4f5a-be57-4aee7fb4522f] POST /api/search/semantic -> 200 (42.45ms)
+2026-09-27 19:51:49 | INFO    | [contractiq.api] [req:03e57cfa-9a2b-4263-b8e7-5a82f3daf436] POST /api/search/semantic -> 200 (39.90ms)
+2026-09-27 19:51:50 | INFO    | [contractiq.api] [req:afd80800-fab7-4e6d-aa2d-fdc39329e6ba] POST /api/search/semantic -> 200 (48.66ms)
+2026-09-27 19:51:50 | INFO    | [contractiq.api] [req:3677c4ed-aa8d-4c40-b7f2-22f496cc43c6] POST /api/search/semantic -> 200 (50.61ms)
+2026-09-27 19:51:50 | INFO    | [contractiq.api] [req:2a5e0c79-575d-48f0-a04f-531346b18fe9] POST /api/search/semantic -> 200 (47.25ms)
+2026-09-27 19:51:50 | INFO    | [contractiq.api] [req:4fae2733-a446-47cd-92bd-f68c7be2b422] POST /api/search/semantic -> 200 (45.54ms)
+2026-09-27 19:51:50 | INFO    | [contractiq.api] [req:54b2b7ad-189a-4d4d-a77d-381c02086191] POST /api/search/semantic -> 200 (43.72ms)
+2026-09-27 19:51:50 | INFO    | [contractiq.api] [req:fc6cd631-5a7c-474b-8105-67d31c1f995c] POST /api/search/semantic -> 200 (45.49ms)
+2026-09-27 19:51:50 | INFO    | [contractiq.api] [req:8f77a12c-9120-4b86-b40c-5c5cda270e0c] POST /api/search/semantic -> 200 (50.59ms)
+2026-09-27 19:51:50 | INFO    | [contractiq.api] [req:bf8f7a70-0f23-483f-a8d1-d4e075a20d48] POST /api/search/semantic -> 200 (47.74ms)
+2026-09-27 19:51:50 | INFO    | [contractiq.api] [req:af716b40-a045-46e5-a5dd-4018c707c29c] POST /api/search/semantic -> 200 (43.20ms)
+2026-09-27 19:51:50 | INFO    | [contractiq.api] [req:2598204c-ca6b-4446-bc0c-efa4fdaba270] POST /api/search/semantic -> 200 (41.97ms)
+2026-09-27 19:51:50 | INFO    | [contractiq.api] [req:24ff49c0-ab35-455c-83a1-dde788a95dc7] POST /api/search/semantic -> 200 (19.12ms)
+2026-09-27 19:51:50 | INFO    | [contractiq.api] [req:31aef632-b3c8-454f-97a4-84d87fa022ee] POST /api/search/semantic -> 200 (17.66ms)
+2026-09-27 19:51:50 | INFO    | [contractiq.api] [req:80dd21c9-9ff0-4c27-8e1c-ca8cba6cf8e4] POST /api/contracts/upload -> 201 (1.90ms)
+2026-09-27 19:51:50 | INFO    | [contractiq.api] [req:-] Starting background contract analysis for contract ctr_abc171a02cc3 (benchmark_contract_0.txt)
+2026-09-27 19:51:50 | INFO    | [contractiq.api] [req:-] Completed analysis for ctr_abc171a02cc3 in 0.37s [Risk Score: 22, Level: LOW]
+2026-09-27 19:51:50 | INFO    | [contractiq.api] [req:3fb888f1-fd96-4b49-97fe-671fd91bffb0] POST /api/contracts/ctr_abc171a02cc3/analyze -> 200 (375.55ms)
+2026-09-27 19:51:50 | INFO    | [contractiq.api] [req:d6e43232-7e7d-4cae-b55c-45c26e31dd70] POST /api/contracts/upload -> 201 (1.50ms)
+2026-09-27 19:51:50 | INFO    | [contractiq.api] [req:-] Starting background contract analysis for contract ctr_619f80bf9611 (benchmark_contract_1.txt)
+2026-09-27 19:51:50 | INFO    | [contractiq.api] [req:-] Completed analysis for ctr_619f80bf9611 in 0.32s [Risk Score: 22, Level: LOW]
+2026-09-27 19:51:50 | INFO    | [contractiq.api] [req:f4f43cb9-1f83-4ed0-b567-08749761bfe3] POST /api/contracts/ctr_619f80bf9611/analyze -> 200 (321.20ms)
+2026-09-27 19:51:50 | INFO    | [contractiq.api] [req:693e47c5-bf9c-4494-b16c-bc1dd97ec639] POST /api/contracts/upload -> 201 (1.70ms)
+2026-09-27 19:51:50 | INFO    | [contractiq.api] [req:-] Starting background contract analysis for contract ctr_a79b67541a58 (benchmark_contract_2.txt)
+2026-09-27 19:51:51 | INFO    | [contractiq.api] [req:-] Completed analysis for ctr_a79b67541a58 in 0.30s [Risk Score: 22, Level: LOW]
+2026-09-27 19:51:51 | INFO    | [contractiq.api] [req:f3578fe4-3394-464a-8c53-eb6da1d56a9c] POST /api/contracts/ctr_a79b67541a58/analyze -> 200 (304.22ms)
+2026-09-27 19:53:30 | INFO    | [contractiq.api] [req:ef483dca-3442-49b8-9c93-685bea7b1482] POST /api/search/semantic -> 200 (11.43ms)
+2026-09-27 19:53:39 | INFO    | [contractiq.api] [req:a9004b56-75b2-4384-a0a7-a27523bebe23] POST /api/contracts/upload -> 201 (1.63ms)
+2026-09-27 19:53:39 | INFO    | [contractiq.api] [req:-] Starting background contract analysis for contract ctr_3c316f40577b (nda_agreement.txt)
+2026-09-27 19:53:39 | INFO    | [contractiq.api] [req:-] Completed analysis for ctr_3c316f40577b in 0.31s [Risk Score: 22, Level: LOW]
+2026-09-27 19:53:39 | INFO    | [contractiq.api] [req:504c0010-6a39-41da-a720-5531f1175e62] GET /api/contracts/ctr_3c316f40577b -> 200 (1.03ms)
+2026-09-27 19:53:39 | INFO    | [contractiq.api] [req:3e507d1e-fc3b-4a1e-8256-afeac7664447] GET /api/contracts/ctr_3c316f40577b/analysis -> 200 (1.10ms)
+2026-09-27 19:54:25 | INFO    | [contractiq.api] [req:c97ab280-1bce-4074-ba99-3c45ca0c62d9] GET / -> 307 (1.10ms)

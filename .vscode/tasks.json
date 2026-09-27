@@ -16,6 +16,36 @@
             }
         },
         {
+            "label": "Start FastAPI Backend",
+            "type": "shell",
+            "command": "uvicorn api:app --host 0.0.0.0 --port 8000 --reload",
+            "problemMatcher": [],
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            }
+        },
+        {
+            "label": "Build FAISS Vector Database",
+            "type": "shell",
+            "command": "python build_vector_index.py --limit 30",
+            "problemMatcher": [],
+            "presentation": {
+                "reveal": "always",
+                "panel": "dedicated"
+            }
+        },
+        {
+            "label": "Run Model Tests",
+            "type": "shell",
+            "command": "pytest test_api_endpoints.py -v",
+            "problemMatcher": [],
+            "presentation": {
+                "reveal": "always",
+                "panel": "dedicated"
+            }
+        },
+        {
             "label": "Run OCR Pipeline",
             "type": "shell",
             "command": "python ocrpipeline.py",
