@@ -10,19 +10,8 @@ from nltk.tokenize import word_tokenize
 import numpy as np
 
 
-from pathlib import Path
-
 # Load JSON
-BASE_DIR = Path(__file__).resolve().parent
-json_path = BASE_DIR / "cuad-main" / "data" / "CUADv1.json"
-if not json_path.exists():
-    fallback = Path(r"D:\ContractIntelligence\cuad-main\data\CUADv1.json")
-    if fallback.exists():
-        json_path = fallback
-    else:
-        raise FileNotFoundError(f"CUADv1.json not found at {json_path}")
-
-with open(json_path, "r", encoding="utf-8") as f:
+with open(r"D:\\ContractIntelligence\\cuad-main\\data\\CUADv1.json", "r", encoding="utf-8") as f:
     data = json.load(f)
 
     rows = []
@@ -159,65 +148,88 @@ with open(json_path, "r", encoding="utf-8") as f:
     df["duration"] = duration_result
 
 
-if __name__ == "__main__":
-    print("\n" + "=" * 60)
-    print("CUAD DATASET INSPECTION")
-    print("=" * 60)
-    print("DataFrame Shape:", df.shape)
-    print("\nColumns:", df.columns.tolist())
-    print("\nMissing values:\n", df.isnull().sum())
-    
-    print("\nTop 10 Fields:")
-    print(df["field"].value_counts().head(10))
+# print("\nDATE ANALYSIS")
+# print(
+#     df[df["field"].isin(date_fields)]
+#     [["contract_title", "field", "extracted_date"]]
+#     .head(20)
+# )
 
-    print("\n" + "=" * 60)
-    print("DATE ANALYSIS")
-    print("=" * 60)
-    date_df = df[df["field"].isin(date_fields)][["contract_title", "field", "extracted_date"]].dropna(subset=["extracted_date"])
-    print(date_df.head(15).to_string(index=False))
+# print("\nDURATION ANALYSIS")
+# print(
+#     df[df["field"].isin(duration_fields)]
+#     [["field", "duration"]]
+#     .head(20)
+#     .to_string(index=False)
+# )
 
-    print("\n" + "=" * 60)
-    print("DURATION ANALYSIS")
-    print("=" * 60)
-    duration_df = df[df["field"].isin(duration_fields)][["field", "duration"]].dropna(subset=["duration"])
-    print(duration_df.head(15).to_string(index=False))
+# print("\nDuration Summary")
+# print(df.groupby("field")["duration"].count())
+# print(
+#     df[df["duration"].notna()]
+#     [["field", "duration"]]
+#     .value_counts()
+# )
+#Tokenization and Preprocessing
 
-    print("\nDuration Counts by Field:")
-    print(df.groupby("field")["duration"].count())
 
-    # -------------------------------
-    # DEMO SPACY EMBEDDINGS (SAMPLE)
-    # -------------------------------
-    print("\n" + "=" * 60)
-    print("SPACY EMBEDDINGS (SAMPLE)")
-    print("=" * 60)
-    try:
-        nlp = spacy.load("en_core_web_sm")
-        print("SpaCy model 'en_core_web_sm' loaded successfully.")
-    except Exception as e:
-        print(f"Could not load spaCy model: {e}")
-        nlp = None
+# def preprocess_text(text):
+#     if not text:
+#         return ""
+#     # Lowercase
+#     text = text.lower()
+#     # Remove punctuation and special characters
+#     text = re.sub(r'[^\w\s]', '', text)
+#     # Tokenize
+#     tokens = word_tokenize(text)
+#     # Remove stopwords
+#     stop_words = set(stopwords.words('english'))
+#     tokens = [word for word in tokens if word not in stop_words]
+#     return tokens
 
-    if nlp is not None:
-        sample_df = df.head(10)
-        embeddings = []
-        for idx, row in sample_df.iterrows():
-            q_text = row["question"] if pd.notna(row["question"]) else ""
-            c_text = row["context_text"][:200] if pd.notna(row["context_text"]) else ""
-            a_text = row["answer_text"] if pd.notna(row["answer_text"]) else ""
+# df["tokenized_question"] = df["question"].apply(preprocess_text)
+# df["tokenized_context"] = df["context_text"].apply(preprocess_text)
 
-            embeddings.append({
-                "qa_id": row["qa_id"],
-                "field": row["field"],
-                "question_embedding": nlp(q_text).vector,
-                "context_embedding": nlp(c_text).vector,
-                "answer_embedding": nlp(a_text).vector
-            })
+# df["tokenized_answer"] = df["answer_text"].apply(preprocess_text)
 
-        print(f"Sample embeddings generated: {len(embeddings)}")
-        print("Vector dimension:", embeddings[0]["question_embedding"].shape)
-        print("=" * 60)
-        print("Pipeline main.py finished successfully.")
+
+# -------------------------------
+# LOAD SPACY MODEL
+# -------------------------------
+
+nlp = spacy.load("en_core_web_md")
+print("\nSpacy model loaded successfully.")
+embeddings = []
+
+for idx, row in df.iterrows():
+
+    # Use ORIGINAL text, not tokenized text
+    question_text = row["question"] if pd.notna(row["question"]) else ""
+    context_text = row["context_text"] if pd.notna(row["context_text"]) else ""
+    answer_text = row["answer_text"] if pd.notna(row["answer_text"]) else ""
+
+    # Generate documents
+    question_doc = nlp(question_text)
+    context_doc = nlp(context_text)
+    answer_doc = nlp(answer_text)
+
+    # Store embeddings
+    embeddings.append({
+        "qa_id": row["qa_id"],
+        "field": row["field"],
+        "question_embedding": question_doc.vector,
+        "context_embedding": context_doc.vector,
+        "answer_embedding": answer_doc.vector
+    })
+
+print("\nEmbeddings generated successfully.")
+print("Total embeddings generated:", len(embeddings))
+
+if embeddings:
+    print(
+        "Question embedding shape:",
+        embeddings[0]["question_embedding"].shape
+    )
 
 
 
