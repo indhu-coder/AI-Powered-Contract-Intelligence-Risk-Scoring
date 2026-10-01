@@ -1,4 +1,5 @@
 import json
+from pydoc import doc, text
 import pandas as pd
 from dateutil import parser
 import joblib
@@ -6,6 +7,7 @@ import spacy
 import re
 import nltk
 from nltk.tokenize import word_tokenize
+import numpy as np
 
 
 from pathlib import Path
@@ -23,28 +25,42 @@ if not json_path.exists():
 with open(json_path, "r", encoding="utf-8") as f:
     data = json.load(f)
 
-rows = []
+    rows = []
 
-for contract in data["data"]:
-    contract_title = contract.get("title", "")
-    contract_title = contract_title.replace("-", "_")
-    contract_title = contract_title.split("_")[-1]  # Use last part of title as identifier
-    for paragraph in contract.get("paragraphs", []):
+    for contract in data["data"]:
+        contract_title = contract.get("title", "")
+        contract_title = contract_title.replace("-", "_")
+        contract_title = contract_title.split("_")[-1]  # Use last part of title as identifier
+        for paragraph in contract.get("paragraphs", []):
 
-        # The JSON sample does not show a context field
-        context = paragraph.get("context", "")
+            # The JSON sample does not show a context field
+            context = paragraph.get("context", "")
 
-        for qa in paragraph.get("qas", []):
-            qa_id = qa.get("id", "")
-            details = qa.get("details", {})
-            # Extract field name from ID
-            field = qa_id.split("__")[-1]
-            
-            answers = qa.get("answers", [])
+            for qa in paragraph.get("qas", []):
+                qa_id = qa.get("id", "")
+                details = qa.get("details", {})
+                # Extract field name from ID
+                field = qa_id.split("__")[-1]
+                
+                answers = qa.get("answers", [])
 
-            # Multiple answers → multiple rows
-            if answers:
-                for answer in answers:
+                # Multiple answers → multiple rows
+                if answers:
+                    for answer in answers:
+                        rows.append({
+                            "contract_title": contract_title,
+                            "qa_id": qa_id,
+                            "details": details,
+                            "field": field,
+                            "question": qa.get("question", ""),
+                            "context_text": context,
+                            "answer_text": answer.get("text", ""),
+                            "answer_start": answer.get("answer_start", None),
+                            "is_impossible": qa.get("is_impossible", False)
+                        })
+
+                # No answer / impossible question
+                else:
                     rows.append({
                         "contract_title": contract_title,
                         "qa_id": qa_id,
@@ -52,109 +68,95 @@ for contract in data["data"]:
                         "field": field,
                         "question": qa.get("question", ""),
                         "context_text": context,
-                        "answer_text": answer.get("text", ""),
-                        "answer_start": answer.get("answer_start", None),
-                        "is_impossible": qa.get("is_impossible", False)
+                        "answer_text": "",
+                        "answer_start": None,
+                        "is_impossible": qa.get("is_impossible", True)
                     })
 
-            # No answer / impossible question
-            else:
-                rows.append({
-                    "contract_title": contract_title,
-                    "qa_id": qa_id,
-                    "details": details,
-                    "field": field,
-                    "question": qa.get("question", ""),
-                    "context_text": context,
-                    "answer_text": "",
-                    "answer_start": None,
-                    "is_impossible": qa.get("is_impossible", True)
-                })
+    # Convert to DataFrame
+    df = pd.DataFrame(rows)
 
-# Convert to DataFrame
-df = pd.DataFrame(rows)
+    # Basic inspection
+    # print(df.head())
+    # print("\nShape:", df.shape)
+    # print(df.isnull().sum())
+    # print("\nColumns:")
+    # print(df.columns.tolist())
+    # print(df.info())
 
-# Basic inspection
-# print(df.head())
-# print("\nShape:", df.shape)
-# print(df.isnull().sum())
-# print("\nColumns:")
-# print(df.columns.tolist())
-# print(df.info())
+    # field_counts = df['field'].value_counts()
+    # print("\nField Counts:")
+    # print(field_counts)
 
-# field_counts = df['field'].value_counts()
-# print("\nField Counts:")
-# print(field_counts)
-
-# title_counts = df['contract_title'].value_counts()
-# print("\nContract Title Counts:")   
-# print(title_counts)
+    # title_counts = df['contract_title'].value_counts()
+    # print("\nContract Title Counts:")   
+    # print(title_counts)
 
 
-# ---------------- DATE ANALYSIS ----------------
+    # ---------------- DATE ANALYSIS ----------------
 
 
-date_fields = [
-    "Agreement Date",
-    "Effective Date",
-    "Expiration Date"
-]
+    date_fields = [
+        "Agreement Date",
+        "Effective Date",
+        "Expiration Date"
+    ]
 
-duration_fields = [
-    "Renewal Term",
-    "Notice Period To Terminate Renewal"
-]
+    duration_fields = [
+        "Renewal Term",
+        "Notice Period To Terminate Renewal"
+    ]
 
-def extract_date(text):
-    if pd.isna(text) or str(text).strip() == "":
-        return pd.NaT
+    def extract_date(text):
+        if pd.isna(text) or str(text).strip() == "":
+            return pd.NaT
 
-    try:
-        return pd.Timestamp(parser.parse(str(text), fuzzy=True))
-    except:
-        return pd.NaT
-    
-def extract_duration(text):
-    if pd.isna(text) or not str(text).strip():
-        return None
+        try:
+            return pd.Timestamp(parser.parse(str(text), fuzzy=True))
+        except:
+            return pd.NaT
+        
+    def extract_duration(text):
+        if pd.isna(text) or not str(text).strip():
+            return None
 
-    text = str(text)
+        text = str(text)
 
-    # Prefer number inside parentheses: one hundred eighty (180) days
-    match = re.search(
-        r'\((\d+)\)\s*(day|days|week|weeks|month|months|year|years)\b',
-        text,
-        re.IGNORECASE
-    )
+        # Prefer number inside parentheses: one hundred eighty (180) days
+        match = re.search(
+            r'\((\d+)\)\s*(day|days|week|weeks|month|months|year|years)\b',
+            text,
+            re.IGNORECASE
+        )
 
-    if match:
-        return f"{match.group(1)} {match.group(2)}"
+        if match:
+            return f"{match.group(1)} {match.group(2)}"
 
-    # Normal numeric form: 30 days
-    match = re.search(
-        r'\b(\d+)\s*(day|days|week|weeks|month|months|year|years)\b',
-        text,
-        re.IGNORECASE
-    )
+        # Normal numeric form: 30 days
+        match = re.search(
+            r'\b(\d+)\s*(day|days|week|weeks|month|months|year|years)\b',
+            text,
+            re.IGNORECASE
+        )
 
-    return match.group(0) if match else None
-
-
-# Create separate results
-date_result = df["answer_text"].where(
-    df["field"].isin(date_fields)
-).apply(extract_date)
-
-duration_result = df["answer_text"].where(
-    df["field"].isin(duration_fields)
-).apply(extract_duration)
-
-df["duration"] = duration_result
+        return match.group(0) if match else None
 
 
-# Assign after extraction
-df["extracted_date"] = date_result
-df["duration"] = duration_result
+    # Create separate results
+    date_result = df["answer_text"].where(
+        df["field"].isin(date_fields)
+    ).apply(extract_date)
+
+    duration_result = df["answer_text"].where(
+        df["field"].isin(duration_fields)
+    ).apply(extract_duration)
+
+    df["duration"] = duration_result
+
+
+    # Assign after extraction
+    df["extracted_date"] = date_result
+    df["duration"] = duration_result
 
 
 if __name__ == "__main__":
