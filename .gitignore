@@ -1,0 +1,13 @@
+# Trained models
+bert-cuad-download/
+bert-cuad-date-duration/
+
+# Logs
+*.log
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Virtual environment
+contractenv/
