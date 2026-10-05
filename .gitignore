@@ -11,3 +11,6 @@ __pycache__/
 
 # Virtual environment
 contractenv/
+
+#csv file
+cuad_date_duration.csv
