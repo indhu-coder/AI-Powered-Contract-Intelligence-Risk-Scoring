@@ -90,6 +90,14 @@ answers = one or multiple answer spans
 answer_start = character position in the original contract text
 is_impossible=True = no answer was found for that question
 
+Justifying Null in Answer_start
+
+Number of documents: 510
+Total questions in JSON: 20910
+Answerable questions in JSON: 6702
+Unanswerable questions in JSON: 14208
+Total answerable records: 6702
+
 Field Counts:
 
       Parties                               2555
@@ -239,3 +247,22 @@ Successfully installed en-core-web-sm-3.8.0
                               [{'text': 'DISTRIBUTOR AGREEMENT
 
          ', 'label': 'ORG'}, {'text': 'DISTRIBUTOR  AGREEMENT', 'label': 'ORG'}, {'text': 'Electric CityCorp.', 'label': 'ORG'}, {'text': 'Delaware', 'label': 'GPE'}, {'text': 'Electric City', 'label': 'GPE'}, {'text': 'this 7th day of September, 1999', 'label': 'DATE'}, {'text': 'Company', 'label': 'ORG'}, {'text': 'Company', 'label': 'ORG'}, {'text': 'Company', 'label': 'ORG'}, {'text': 'Distributor', 'label': 'PERSON'}, {'text': 'Objectives', 'label': 'ORG'}, {'text': 'Distributor', 'label': 'ORG'}, {'text': 'Company', 'label': 'ORG'}, {'text': 'the State of  Illinois', 'label': 'ORG'}, {'text': 'Distributor', 'label': 'LOC'}, {'text': 'Distributor as Company's', 'label': 'ORG'}, {'text': 'Distributor', 'label': 'PERSON'}]
+
+Single agreement by example 
+
+         Example index: 23
+      Contract title: LOOKSMARTLTD_07_20_2012-EX-99.(D)(I)-SPONSORSHIP AGREEMENT
+      Context length: 25922
+      Answer start: 23400
+      Answer length: 77
+      Answer matches original context: True
+      Context around answer:
+      'r by operation of law or otherwise without the prior written consent  of each of the other parties. Any attempted assignment in violation of this Section shall be null and void.     23. No Representations or Duties. Each Sponsor specifically understands and agrees that no othe'
+      Number of chunks: 30
+
+
+Validation metrics:
+
+Answerable validation references: 699
+References covered: 666
+References not covered: 33
