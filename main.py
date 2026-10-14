@@ -82,154 +82,200 @@ with open(r"D:\\ContractIntelligence\\cuad-main\\data\\CUADv1.json", "r", encodi
     # print(title_counts)
 
 
+# Count missing answer_start by question type
+print(
+    df[df["answer_start"].isna()]
+    ["is_impossible"]
+    .value_counts()
+)
+
+# Compare all rows by question type
+print(
+    pd.crosstab(
+        df["is_impossible"],
+        df["answer_start"].isna(),
+        margins=True
+    )
+)
+
+# Check whether answer text agrees with is_impossible
+print(pd.crosstab(
+    df["is_impossible"],
+    df["answer_text"].isna(),
+    margins=True
+))
+
+# Check missing answer_start values
+print(pd.crosstab(
+    df["is_impossible"],
+    df["answer_start"].isna(),
+    margins=True
+))
+
+# Check answer text for unanswerable records
+unanswerable = df[df["is_impossible"] == True]
+
+print("Unanswerable records:", len(unanswerable))
+
+print(
+    "Empty answer text:",
+    unanswerable["answer_text"].fillna("").str.strip().eq("").sum()
+)
+
+print(
+    "Non-empty answer text:",
+    unanswerable["answer_text"].fillna("").str.strip().ne("").sum()
+)
+
+
     # ---------------- DATE ANALYSIS ----------------
 
 
-    date_fields = [
-        "Agreement Date",
-        "Effective Date",
-        "Expiration Date"
-    ]
+#     date_fields = [
+#         "Agreement Date",
+#         "Effective Date",
+#         "Expiration Date"
+#     ]
 
-    duration_fields = [
-        "Renewal Term",
-        "Notice Period To Terminate Renewal"
-    ]
+#     duration_fields = [
+#         "Renewal Term",
+#         "Notice Period To Terminate Renewal"
+#     ]
 
-    def extract_date(text):
-        if pd.isna(text) or str(text).strip() == "":
-            return pd.NaT
+#     def extract_date(text):
+#         if pd.isna(text) or str(text).strip() == "":
+#             return pd.NaT
 
-        try:
-            return pd.Timestamp(parser.parse(str(text), fuzzy=True))
-        except:
-            return pd.NaT
+#         try:
+#             return pd.Timestamp(parser.parse(str(text), fuzzy=True))
+#         except:
+#             return pd.NaT
         
-    def extract_duration(text):
-        if pd.isna(text) or not str(text).strip():
-            return None
+#     def extract_duration(text):
+#         if pd.isna(text) or not str(text).strip():
+#             return None
 
-        text = str(text)
+#         text = str(text)
 
-        # Prefer number inside parentheses: one hundred eighty (180) days
-        match = re.search(
-            r'\((\d+)\)\s*(day|days|week|weeks|month|months|year|years)\b',
-            text,
-            re.IGNORECASE
-        )
+#         # Prefer number inside parentheses: one hundred eighty (180) days
+#         match = re.search(
+#             r'\((\d+)\)\s*(day|days|week|weeks|month|months|year|years)\b',
+#             text,
+#             re.IGNORECASE
+#         )
 
-        if match:
-            return f"{match.group(1)} {match.group(2)}"
+#         if match:
+#             return f"{match.group(1)} {match.group(2)}"
 
-        # Normal numeric form: 30 days
-        match = re.search(
-            r'\b(\d+)\s*(day|days|week|weeks|month|months|year|years)\b',
-            text,
-            re.IGNORECASE
-        )
+#         # Normal numeric form: 30 days
+#         match = re.search(
+#             r'\b(\d+)\s*(day|days|week|weeks|month|months|year|years)\b',
+#             text,
+#             re.IGNORECASE
+#         )
 
-        return match.group(0) if match else None
-
-
-    # Create separate results
-    date_result = df["answer_text"].where(
-        df["field"].isin(date_fields)
-    ).apply(extract_date)
-
-    duration_result = df["answer_text"].where(
-        df["field"].isin(duration_fields)
-    ).apply(extract_duration)
-
-    df["duration"] = duration_result
+#         return match.group(0) if match else None
 
 
-    # Assign after extraction
-    df["extracted_date"] = date_result
-    df["duration"] = duration_result
+#     # Create separate results
+#     date_result = df["answer_text"].where(
+#         df["field"].isin(date_fields)
+#     ).apply(extract_date)
+
+#     duration_result = df["answer_text"].where(
+#         df["field"].isin(duration_fields)
+#     ).apply(extract_duration)
+
+#     df["duration"] = duration_result
 
 
-# print("\nDATE ANALYSIS")
-# print(
-#     df[df["field"].isin(date_fields)]
-#     [["contract_title", "field", "extracted_date"]]
-#     .head(20)
-# )
-
-# print("\nDURATION ANALYSIS")
-# print(
-#     df[df["field"].isin(duration_fields)]
-#     [["field", "duration"]]
-#     .head(20)
-#     .to_string(index=False)
-# )
-
-# print("\nDuration Summary")
-# print(df.groupby("field")["duration"].count())
-# print(
-#     df[df["duration"].notna()]
-#     [["field", "duration"]]
-#     .value_counts()
-# )
-#Tokenization and Preprocessing
+#     # Assign after extraction
+#     df["extracted_date"] = date_result
+#     df["duration"] = duration_result
 
 
-# def preprocess_text(text):
-#     if not text:
-#         return ""
-#     # Lowercase
-#     text = text.lower()
-#     # Remove punctuation and special characters
-#     text = re.sub(r'[^\w\s]', '', text)
-#     # Tokenize
-#     tokens = word_tokenize(text)
-#     # Remove stopwords
-#     stop_words = set(stopwords.words('english'))
-#     tokens = [word for word in tokens if word not in stop_words]
-#     return tokens
+# # print("\nDATE ANALYSIS")
+# # print(
+# #     df[df["field"].isin(date_fields)]
+# #     [["contract_title", "field", "extracted_date"]]
+# #     .head(20)
+# # )
 
-# df["tokenized_question"] = df["question"].apply(preprocess_text)
-# df["tokenized_context"] = df["context_text"].apply(preprocess_text)
+# # print("\nDURATION ANALYSIS")
+# # print(
+# #     df[df["field"].isin(duration_fields)]
+# #     [["field", "duration"]]
+# #     .head(20)
+# #     .to_string(index=False)
+# # )
 
-# df["tokenized_answer"] = df["answer_text"].apply(preprocess_text)
+# # print("\nDuration Summary")
+# # print(df.groupby("field")["duration"].count())
+# # print(
+# #     df[df["duration"].notna()]
+# #     [["field", "duration"]]
+# #     .value_counts()
+# # )
+# #Tokenization and Preprocessing
 
 
-# -------------------------------
-# LOAD SPACY MODEL
-# -------------------------------
+# # def preprocess_text(text):
+# #     if not text:
+# #         return ""
+# #     # Lowercase
+# #     text = text.lower()
+# #     # Remove punctuation and special characters
+# #     text = re.sub(r'[^\w\s]', '', text)
+# #     # Tokenize
+# #     tokens = word_tokenize(text)
+# #     # Remove stopwords
+# #     stop_words = set(stopwords.words('english'))
+# #     tokens = [word for word in tokens if word not in stop_words]
+# #     return tokens
 
-nlp = spacy.load("en_core_web_md")
-print("\nSpacy model loaded successfully.")
-embeddings = []
+# # df["tokenized_question"] = df["question"].apply(preprocess_text)
+# # df["tokenized_context"] = df["context_text"].apply(preprocess_text)
 
-for idx, row in df.iterrows():
+# # df["tokenized_answer"] = df["answer_text"].apply(preprocess_text)
 
-    # Use ORIGINAL text, not tokenized text
-    question_text = row["question"] if pd.notna(row["question"]) else ""
-    context_text = row["context_text"] if pd.notna(row["context_text"]) else ""
-    answer_text = row["answer_text"] if pd.notna(row["answer_text"]) else ""
 
-    # Generate documents
-    question_doc = nlp(question_text)
-    context_doc = nlp(context_text)
-    answer_doc = nlp(answer_text)
+# # -------------------------------
+# # LOAD SPACY MODEL
+# # -------------------------------
 
-    # Store embeddings
-    embeddings.append({
-        "qa_id": row["qa_id"],
-        "field": row["field"],
-        "question_embedding": question_doc.vector,
-        "context_embedding": context_doc.vector,
-        "answer_embedding": answer_doc.vector
-    })
+# nlp = spacy.load("en_core_web_md")
+# print("\nSpacy model loaded successfully.")
+# embeddings = []
 
-print("\nEmbeddings generated successfully.")
-print("Total embeddings generated:", len(embeddings))
+# for idx, row in df.iterrows():
 
-if embeddings:
-    print(
-        "Question embedding shape:",
-        embeddings[0]["question_embedding"].shape
-    )
+#     # Use ORIGINAL text, not tokenized text
+#     question_text = row["question"] if pd.notna(row["question"]) else ""
+#     context_text = row["context_text"] if pd.notna(row["context_text"]) else ""
+#     answer_text = row["answer_text"] if pd.notna(row["answer_text"]) else ""
+
+#     # Generate documents
+#     question_doc = nlp(question_text)
+#     context_doc = nlp(context_text)
+#     answer_doc = nlp(answer_text)
+
+#     # Store embeddings
+#     embeddings.append({
+#         "qa_id": row["qa_id"],
+#         "field": row["field"],
+#         "question_embedding": question_doc.vector,
+#         "context_embedding": context_doc.vector,
+#         "answer_embedding": answer_doc.vector
+#     })
+
+# print("\nEmbeddings generated successfully.")
+# print("Total embeddings generated:", len(embeddings))
+
+# if embeddings:
+#     print(
+#         "Question embedding shape:",
+#         embeddings[0]["question_embedding"].shape
+#     )
 
 
 
