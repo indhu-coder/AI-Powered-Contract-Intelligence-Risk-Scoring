@@ -1,268 +1,187 @@
-# AI-Powered-Contract-Intelligence-Risk-Scoring
-A sophisticated NLP platform designed for legal and compliance teams.
-This system ingests lengthy legal contracts (PDFs/Word docs), automatically extracts key entities (dates, parties,jurisdictions), identifies specific clauses (e.g., termination, confidentiality),and flags anomalous or high-risk language using a fine-tuned Large Language Model (LLM) and
-Named Entity Recognition (NER).
+# ContractIQ — AI-Powered Contract Intelligence and Risk Scoring
 
+ContractIQ is an AI-assisted contract analysis project designed to help legal, compliance, and business teams review contracts more efficiently. It processes contract documents, answers questions about important clauses, extracts contract-related dates and terms, and supports risk-oriented review.
 
-Recommended pipeline
+> **Important:** ContractIQ is a decision-support prototype, not a substitute for legal advice. Extracted answers and risk indicators must be reviewed by a qualified person before being used to make legal or business decisions.
 
-      JSON contracts
-            ↓
-      Python JSON loading
-            ↓
-      Validate / inspect structure
-            ↓
-      Convert to DataFrame (for tabular preprocessing)
-            ↓
-      Text preprocessing
-            ↓
-      NER / Clause extraction
-            ↓
-      Embeddings / LLM
-            ↓
-      Risk scoring
-            ↓
-      Model / Vector Database
+## Project Goals
 
+- Reduce the time required to find important information in long contracts.
+- Answer clause-specific questions using a saved fine-tuned BERT question-answering model.
+- Help identify dates, notice periods, termination terms, parties, jurisdictions, and other contract details when supported by the document.
+- Support contract risk review through the project's risk-scoring and classification components.
+- Provide an interactive interface for reviewing extracted answers and exporting results.
 
+## Key Features
 
-NLP pipeline:
+- **Document input:** Upload contract documents through the Streamlit interface. PDF and DOCX support is part of the application workflow.
+- **Text extraction:** Extract text from documents before analysis. Scanned PDFs may require OCR; extraction quality depends on the document and OCR output.
+- **Question-based extraction:** Ask predefined or custom questions about contract clauses and terms.
+- **Long-document handling:** Tokenize document text with offsets and process long contexts in overlapping windows.
+- **Clause-focused retrieval:** Retrieve relevant portions of a contract before running question-answering inference.
+- **Answer-span decoding:** Select candidate answer spans and apply confidence/no-answer thresholds to reduce unsupported answers.
+- **Contract risk components:** The repository includes risk-engine and clause-model components intended to support risk scoring/classification.
+- **Results export:** The Streamlit workflow supports exporting analysis results to CSV.
+- **Monitoring:** The inference workflow records useful diagnostics such as elapsed time, number of windows, model version/source, and status.
 
-            Raw JSON
-               ↓
-            Flatten nested JSON
-               ↓
-            One row per answer
-               ↓
-            Data Cleaning
-               ↓
-            EDA
-               ↓
-            Contract / Clause Text
-               ↓
-            NER
-               ↓
-            Clause Classification
-               ↓
-            Risk Detection
-               ↓
-            Risk Score
+## Technology Stack
 
-Exploratory Data Analysis:
+- Python
+- Streamlit
+- Hugging Face Transformers and a saved BERT question-answering model
+- PyTorch
+- Document text extraction for PDF/DOCX files
+- OCR support for scanned documents, where configured
+- Retrieval/vector-store components present in the repository
+- Pandas for tabular results and CSV export
+- Docker and Docker Compose files are included in the repository
 
-      Data columns (total 9 columns):
-       #   Column          Non-Null Count  Dtype  
-      ---  ------          --------------  -----  
-       0   contract_title  28031 non-null  str    
-       1   qa_id           28031 non-null  str    
-       2   details         28031 non-null  object 
-       3   field           28031 non-null  str    
-       4   question        28031 non-null  str    
-       5   context_text    28031 non-null  str    
-       6   answer_text     28031 non-null  str    
-       7   answer_start    13823 non-null  float64
-       8   is_impossible   28031 non-null  bool   
-      dtypes: bool(1), float64(1), object(1), str(6)
-memory usage: 1.7+ MB
-None
+The exact dependencies and versions should be taken from `requirements.txt` and the current project configuration.
 
-Shape: (28031, 9)
+## How the Inference Workflow Works
 
+1. **Upload a contract** through the application.
+2. **Extract text** from the uploaded document. Scanned PDFs may need OCR.
+3. **Choose questions** from the available question set or enter custom questions.
+4. **Retrieve relevant contract text** for the selected clause or question.
+5. **Tokenize and window the text** so that long documents can be processed within the model's input limits. Character offsets help map predicted token spans back to the original text.
+6. **Run question-answering inference** with the saved model.
+7. **Decode candidate spans** and apply confidence and no-answer thresholds.
+8. **Review the output** and export results if needed.
 
-Null values:
-      
-      contract_title        0
-      qa_id                 0
-      details               0
-      field                 0
-      question              0
-      context_text          0
-      answer_text           0
-      answer_start      14208
-      is_impossible         0
+The application may use a baseline model if the configured fine-tuned model cannot be loaded. Check the logs and model-source/status fields to confirm which model was used for a particular run.
 
+## Repository Components
 
-Meaning of the column names:
-title = contract
-paragraphs = containers for QA records
-qas = questions/labels
-answers = one or multiple answer spans
-answer_start = character position in the original contract text
-is_impossible=True = no answer was found for that question
+The repository has included components such as:
 
-Justifying Null in Answer_start
+- `app.py` — Streamlit user interface
+- `api.py` — API entry point
+- `contract_risk_engine.py` — contract risk scoring/analysis logic
+- `evaluate_model.py` — model evaluation utilities
+- `train_clause_model.py` — clause-model training workflow
+- `build_vector_index.py` — vector-index construction
+- `vector_store.py` — vector-store integration
+- `calibrate_model.py` — model calibration utilities
+- `Dockerfile` and `docker-compose.yml` — container configuration
+- `configs/`, `data/`, `models/`, `reports/`, and tests — configuration, data, model artifacts, reports, and test resources
 
-Number of documents: 510
-Total questions in JSON: 20910
-Answerable questions in JSON: 6702
-Unanswerable questions in JSON: 14208
-Total answerable records: 6702
+File availability and exact responsibilities may differ by branch/version. Refer to the current repository for the authoritative structure.
 
-Field Counts:
+## Installation and Setup
 
-      Parties                               2555
-      License Grant                         1032
-      Audit Rights                           939
-      Cap On Liability                       907
-      Insurance                              904
-      Rofr/Rofo/Rofn                         792
-      Anti-Assignment                        790
-      Post-Termination Services              778
-      Minimum Commitment                     769
-      Revenue/Profit Sharing                 762
-      Exclusivity                            740
-      Ip Ownership Assignment                704
-      Non-Transferable License               670
-      Non-Compete                            650
-      Change Of Control                      642
-      Warranty Duration                      611
-      Irrevocable Or Perpetual License       605
-      Volume Restriction                     599
-      Covenant Not To Sue                    583
-      Joint Ip Ownership                     579
-      Termination For Convenience            573
-      Liquidated Damages                     570
-      Effective Date                         567
-      Affiliate License-Licensee             566
-      Uncapped Liability                     566
-      Expiration Date                        564
-      Source Code Escrow                     563
-      Competitive Restriction Exception      559
-      Affiliate License-Licensor             556
-      Renewal Term                           544
-      No-Solicit Of Employees                542
-      Governing Law                          537
-      Non-Disparagement                      537
-      No-Solicit Of Customers                534
-      Unlimited/All-You-Can-Eat-License      525
-      Price Restrictions                     522
-      Document Name                          521
-      Notice Period To Terminate Renewal     521
-      Most Favored Nation                    520
-      Third Party Beneficiary                517
-      Agreement Date                         516
-      Name: count, dtype: int64
+### 1. Clone the repository
 
-Contract Title Counts:
-contract_title
+```bash
+git clone https://github.com/indhu-coder/AI-Powered-Contract-Intelligence-Risk-Scoring.git
+cd AI-Powered-Contract-Intelligence-Risk-Scoring
+```
 
-            Development Agreement                                    1324
-            STRATEGIC ALLIANCE AGREEMENT                             1304
-            SPONSORSHIP AGREEMENT                                    1134
-            Branding Agreement                                       1095
-            Content License Agreement                                 836
-                                                                     ... 
-            Purchase Agreement2                                        43
-            WEB HOSTING AGREEMENT                                      42
-            Premium Managed Hosting Agreement                          42
-            Maintenance and support contract for SICAP(R) modules      42
-            Franchise Agreement4                                       42
-Name: count, Length: 174, dtype: int64
+### 2. Create and activate a virtual environment
 
+**Windows (PowerShell):**
 
-Extracted date Dataframe:
+```powershell
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+```
 
-              contract_title                               field          extracted_date
-      6      DISTRIBUTOR AGREEMENT                      Agreement Date     1999-09-07
-      7      DISTRIBUTOR AGREEMENT                      Effective Date     2026-09-10
-      8      DISTRIBUTOR AGREEMENT                      Effective Date     2026-09-01
-      9      DISTRIBUTOR AGREEMENT                     Expiration Date     2026-09-10
-      10     DISTRIBUTOR AGREEMENT                        Renewal Term     2026-01-10
-      ...                      ...                                 ...            ...
-      27987  Endorsement Agreement                      Agreement Date     2011-02-13
-      27988  Endorsement Agreement                      Effective Date     2011-02-21
-      27989  Endorsement Agreement                     Expiration Date           None
-      27990  Endorsement Agreement                        Renewal Term           None
-      27991  Endorsement Agreement  Notice Period To Terminate Renewal           None
+**macOS/Linux:**
 
-[2712 rows x 3 columns]
+```bash
+python -m venv .venv
+source .venv/bin/activate
+```
 
-Date Analysis:
+### 3. Install dependencies
 
-      DATE ANALYSIS
-                                 contract_title            field extracted_date
-      6                   DISTRIBUTOR AGREEMENT   Agreement Date     1999-09-07
-      7                   DISTRIBUTOR AGREEMENT   Effective Date     2026-09-10
-      8                   DISTRIBUTOR AGREEMENT   Effective Date     2026-09-01
-      9                   DISTRIBUTOR AGREEMENT  Expiration Date     2026-09-10
-      73   PROMOTION AND DISTRIBUTION AGREEMENT   Agreement Date            NaT
-      74   PROMOTION AND DISTRIBUTION AGREEMENT   Effective Date     2011-08-01
-      75   PROMOTION AND DISTRIBUTION AGREEMENT  Expiration Date     2013-07-31
-      76   PROMOTION AND DISTRIBUTION AGREEMENT  Expiration Date            NaT
+```bash
+python -m pip install --upgrade pip
+pip install -r requirements.txt
+```
 
+If the project uses OCR for scanned PDFs, install and configure the OCR dependencies required by the current code and operating system. Consult the repository configuration for the supported OCR setup.
 
-DURATION ANALYSIS
-                                  
-                                   field duration
-   
-                            Renewal Term      NaN
-      Notice Period To Terminate Renewal      NaN
-                            Renewal Term  1 month
-                            Renewal Term  15 days
-      Notice Period To Terminate Renewal  1 month
-      Notice Period To Terminate Renewal  15 days
-                            Renewal Term      NaN
+### 4. Configure the model path
 
+The inference code must point to a locally available model directory containing the model and tokenizer files. One path used during development was:
 
-Duration Summary
-field
+```text
+D:\ContractIntelligence\ContractIQ-main\ContractIQ-main\ml\models\final
+```
 
-      Non-Disparagement                       0
-      Non-Transferable License                0
-      Notice Period To Terminate Renewal    100
-      Parties                                 0
-      Post-Termination Services               0
-      Price Restrictions                      0
-      Renewal Term                          154
+This is a development-machine path, not a portable path for every installation. Update the model configuration or environment-specific setting to match your local checkout. Do not commit large model weights unless the repository's storage strategy explicitly supports them.
 
-Name: duration, dtype: int64
+### 5. Run the Streamlit application
 
+From the directory containing `app.py`, run:
 
-      field                               duration                 
-      Renewal Term                        1 year                       33
-      Notice Period To Terminate Renewal  1 year                       21
-      Renewal Term                        5 years                      14
-                                          30 days                      12
+```bash
+streamlit run app.py
+```
 
-Installing collected packages: en-core-web-sm
-Successfully installed en-core-web-sm-3.8.0
+Open the local URL printed by Streamlit in your browser.
 
+### Optional: Docker
 
-      ============================================================
-      NER PROCESS STARTED
-      Start time: 2026-09-19 15:39:08
-      ============================================================
-      SpaCy NER model loaded successfully.
-      Total dataframe rows: 28031
-      Unique contexts: 509
-      NER completed.
-      ============================================================
-      End time: 2026-09-19 15:47:20
-      Total time: 0:08:11.829495
-      ============================================================
+The repository includes a `Dockerfile` and `docker-compose.yml`. Review those files and the required environment variables/model mounts before building or starting the container. Model weights and contract documents may need to be mounted or provisioned separately.
 
-      
-       contract_title                    legal_entities
-      DISTRIBUTOR AGREEMENT 
-                              [{'text': 'DISTRIBUTOR AGREEMENT
+## Model and Evaluation Notes
 
-         ', 'label': 'ORG'}, {'text': 'DISTRIBUTOR  AGREEMENT', 'label': 'ORG'}, {'text': 'Electric CityCorp.', 'label': 'ORG'}, {'text': 'Delaware', 'label': 'GPE'}, {'text': 'Electric City', 'label': 'GPE'}, {'text': 'this 7th day of September, 1999', 'label': 'DATE'}, {'text': 'Company', 'label': 'ORG'}, {'text': 'Company', 'label': 'ORG'}, {'text': 'Company', 'label': 'ORG'}, {'text': 'Distributor', 'label': 'PERSON'}, {'text': 'Objectives', 'label': 'ORG'}, {'text': 'Distributor', 'label': 'ORG'}, {'text': 'Company', 'label': 'ORG'}, {'text': 'the State of  Illinois', 'label': 'ORG'}, {'text': 'Distributor', 'label': 'LOC'}, {'text': 'Distributor as Company's', 'label': 'ORG'}, {'text': 'Distributor', 'label': 'PERSON'}]
+The project uses a saved fine-tuned BERT question-answering model for extracting answers from contract text. The inference pipeline includes retrieval, windowing, span decoding, and no-answer threshold handling. This README does not claim that every contract field is extracted correctly in every document.
 
-Single agreement by example 
+One recorded evaluation on a **100-question subset** reported:
 
-         Example index: 23
-      Contract title: LOOKSMARTLTD_07_20_2012-EX-99.(D)(I)-SPONSORSHIP AGREEMENT
-      Context length: 25922
-      Answer start: 23400
-      Answer length: 77
-      Answer matches original context: True
-      Context around answer:
-      'r by operation of law or otherwise without the prior written consent  of each of the other parties. Any attempted assignment in violation of this Section shall be null and void.     23. No Representations or Duties. Each Sponsor specifically understands and agrees that no othe'
-      Number of chunks: 30
+| Metric | Result |
+|---|---:|
+| Overall Exact Match (EM) | 78.00% |
+| Overall token-level F1 | 78.40% |
+| Answerable questions | 30 |
+| Answerable EM | 33.33% |
+| Answerable F1 | 34.67% |
+| Unanswerable questions | 70 |
+| Correct empty predictions among unanswerable questions | 68 / 70 |
+| Overall empty-prediction rate | 87.00% |
 
+**Interpretation:** The overall scores are strongly influenced by the model correctly abstaining on many unanswerable questions. The lower answerable-question scores show that extracting the correct clause text remains a significant limitation. Evaluate answerable and unanswerable questions separately, and validate outputs against the original contract.
 
-Validation metrics:
+## Known Limitations
 
-Answerable validation references: 699
-References covered: 666
-References not covered: 33
+- Answer extraction may be incomplete or inaccurate, especially for answerable questions.
+- Dates and durations can be ambiguous when a contract describes events, notice periods, renewal terms, or termination conditions in different sections.
+- OCR errors in scanned PDFs can reduce downstream extraction quality.
+- Retrieval may miss the relevant clause, and windowing can affect whether a complete answer span is available to the model.
+- Confidence scores and no-answer thresholds are heuristics; they are not guarantees of correctness.
+- Model loading may fall back to a baseline model if the fine-tuned model is unavailable. Confirm the model source/status in logs before interpreting results.
+- Risk scores are indicators for review, not definitive legal conclusions.
+
+## Responsible Use and Data Privacy
+
+- Do not upload confidential contracts to an environment unless you are authorized to do so and understand where the files and outputs are processed or stored.
+- Keep API keys, credentials, and private configuration out of source control.
+- Avoid committing real contracts, personal information, generated predictions containing sensitive text, or model artifacts that should remain private.
+- Review `.gitignore` and deployment settings before publishing or deploying the project.
+- Always have a qualified reviewer verify extracted terms and risk flags before acting on them.
+
+## Testing and Validation
+
+Use the repository's available tests and evaluation scripts, for example:
+
+```bash
+pytest
+python evaluate_model.py
+```
+
+These commands are examples; check each script's arguments and required data/model paths before running. Evaluation results are only comparable when the dataset split, question set, preprocessing, model version, and thresholds are consistent.
+
+## Future Improvements
+
+Potential next steps include improving answerable-question extraction, evaluating retrieval recall, refining no-answer calibration, adding targeted tests for date and duration normalization, and expanding evaluation across contract types. These are improvement opportunities, not claims that the work is already complete.
+
+## Disclaimer
+
+ContractIQ is an AI-assisted research and review tool. It can make mistakes, omit important clauses, or misinterpret context. It does not provide legal advice and should not be used as the sole basis for legal, compliance, financial, or business decisions.
+
+## Repository
+
+GitHub: https://github.com/indhu-coder/AI-Powered-Contract-Intelligence-Risk-Scoring
