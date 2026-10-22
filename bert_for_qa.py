@@ -7,7 +7,19 @@ Original file is located at
     https://colab.research.google.com/drive/1D9wnpnhpSNGFWTN52LSV2-8NekBJqPM8
 """
 
+from networkx import display
 import torch
+import string
+import pandas as pd
+from datasets import Dataset
+import re
+import numpy as np
+from collections import Counter
+from pathlib import Path
+from transformers import (
+    AutoTokenizer,
+    AutoModelForQuestionAnswering
+)
 
 print("CUDA available:", torch.cuda.is_available())
 
@@ -26,13 +38,35 @@ MAX_LENGTH = 384
 DOC_STRIDE = 128
 
 with open(
-    r"/content/CUADv1.json",
+    r"D:\\ContractIntelligence\\cuad-main\\data\\CUADv1.json",
     "r",
     encoding="utf-8"
 ) as f:
 
     cuad = json.load(f)
 
+    print("Number of documents:", len(cuad["data"]))
+
+    total_questions = sum(
+        len(paragraph["qas"])
+        for document in cuad["data"]
+        for paragraph in document["paragraphs"]
+    )
+
+    print("Total questions in JSON:", total_questions)
+
+    total_answerable = sum(
+        1
+        for document in cuad["data"]
+        for paragraph in document["paragraphs"]
+        for qa in paragraph["qas"]
+        if not qa.get("is_impossible", False)
+    )
+
+    total_unanswerable = total_questions - total_answerable
+
+    print("Answerable questions in JSON:", total_answerable)
+    print("Unanswerable questions in JSON:", total_unanswerable)
     records = []
 
 for document in cuad["data"]:
@@ -70,6 +104,33 @@ dataset = Dataset.from_list(records)
 
 df = dataset.to_pandas()
 
+
+# Validate answer offsets before train-test split
+
+answerable = df[df["is_impossible"] == False].copy()
+
+answerable["answer_matches_context"] = answerable.apply(
+    lambda row: (
+        row["context"][
+            int(row["answer_start"]):
+            int(row["answer_start"]) + len(row["answer_text"])
+        ] == row["answer_text"]
+    ),
+    axis=1
+)
+
+print("Total answerable records:", len(answerable))
+print(
+    "Correct answer offsets:",
+    answerable["answer_matches_context"].sum()
+)
+print(
+    "Incorrect answer offsets:",
+    (~answerable["answer_matches_context"]).sum()
+)
+
+print("Total records:", len(df))
+print(df["is_impossible"].value_counts())
 dataset = dataset.train_test_split(
     test_size=0.1,
     seed=42
@@ -78,179 +139,1198 @@ dataset = dataset.train_test_split(
 train_dataset = dataset["train"]
 validation_dataset = dataset["test"]
 
-def preprocess_function(examples):
 
-    questions = [
-        q.strip()
-        for q in examples["question"]
-    ]
+print("Validation questions:", len(validation_dataset))
+# def preprocess_function(examples):
 
-    tokenized = tokenizer(
-        questions,
-        examples["context"],
-        max_length=MAX_LENGTH,
-        truncation="only_second",
-        stride=DOC_STRIDE,
-        return_overflowing_tokens=True,
-        return_offsets_mapping=True,
-        padding="max_length"
+#     questions = [
+#         q.strip()
+#         for q in examples["question"]
+#     ]
+
+#     tokenized = tokenizer(
+#         questions,
+#         examples["context"],
+#         max_length=MAX_LENGTH,
+#         truncation="only_second",
+#         stride=DOC_STRIDE,
+#         return_overflowing_tokens=True,
+#         return_offsets_mapping=True,
+#         padding="max_length"
+#     )
+
+#     sample_mapping = tokenized.pop(
+#         "overflow_to_sample_mapping"
+#     )
+
+#     offset_mapping = tokenized["offset_mapping"]
+
+#     start_positions = []
+#     end_positions = []
+
+#     for i, offsets in enumerate(offset_mapping):
+
+#         sample_index = sample_mapping[i]
+
+#         answer_start = examples["answer_start"][sample_index]
+#         answer_text = examples["answer_text"][sample_index]
+
+#         is_impossible = examples["is_impossible"][sample_index]
+
+#         # ------------------------------------------------
+#         # SQuAD2: no answer
+#         # ------------------------------------------------
+
+#         if is_impossible or not answer_text:
+
+#             cls_index = tokenized["input_ids"][i].index(
+#                 tokenizer.cls_token_id
+#             )
+
+#             start_positions.append(cls_index)
+#             end_positions.append(cls_index)
+
+#             continue
+
+#         answer_end = answer_start + len(answer_text)
+
+#         # ------------------------------------------------
+#         # Find context token boundaries
+#         # ------------------------------------------------
+
+#         sequence_ids = tokenized.sequence_ids(i)
+
+#         context_start = 0
+
+#         while (
+#             context_start < len(sequence_ids)
+#             and sequence_ids[context_start] != 1
+#         ):
+#             context_start += 1
+
+#         context_end = len(sequence_ids) - 1
+
+#         while (
+#             context_end >= 0
+#             and sequence_ids[context_end] != 1
+#         ):
+#             context_end -= 1
+
+#         # Answer is outside this chunk
+#         if (
+#             offsets[context_start][0] > answer_start
+#             or offsets[context_end][1] < answer_end
+#         ):
+
+#             cls_index = tokenized["input_ids"][i].index(
+#                 tokenizer.cls_token_id
+#             )
+
+#             start_positions.append(cls_index)
+#             end_positions.append(cls_index)
+
+#         else:
+
+#             # Find start token
+#             token_start = context_start
+
+#             while (
+#                 token_start <= context_end
+#                 and offsets[token_start][0] <= answer_start
+#             ):
+#                 token_start += 1
+
+#             start_positions.append(token_start - 1)
+
+#             # Find end token
+#             token_end = context_end
+
+#             while (
+#                 token_end >= context_start
+#                 and offsets[token_end][1] >= answer_end
+#             ):
+#                 token_end -= 1
+
+#             end_positions.append(token_end + 1)
+
+#     tokenized["start_positions"] = start_positions
+#     tokenized["end_positions"] = end_positions
+
+#     return tokenized
+
+# tokenized_train = train_dataset.map(
+#     preprocess_function,
+#     batched=True,
+#     remove_columns=train_dataset.column_names
+# )
+
+# tokenized_validation = validation_dataset.map(
+#     preprocess_function,
+#     batched=True,
+#     remove_columns=validation_dataset.column_names
+# )
+
+# from transformers import AutoModelForQuestionAnswering
+
+# model = AutoModelForQuestionAnswering.from_pretrained(
+#     MODEL_NAME
+# )
+
+# from transformers import TrainingArguments
+
+# training_args = TrainingArguments(
+#     output_dir="./bert-cuad-qa",
+
+#     eval_strategy="epoch",
+#     save_strategy="epoch",
+
+#     learning_rate=3e-5,
+
+#     per_device_train_batch_size=8,
+#     per_device_eval_batch_size=8,
+
+#     num_train_epochs=2,
+
+#     weight_decay=0.01,
+
+#     logging_steps=100,
+
+#     load_best_model_at_end=True,
+
+#     report_to="none"
+# )
+
+# from transformers import Trainer
+
+# trainer = Trainer(
+#     model=model,
+#     args=training_args,
+#     train_dataset=tokenized_train,
+#     eval_dataset=tokenized_validation
+# )
+
+# trainer.train()
+
+# trainer.save_model("./bert-cuad-qa")
+
+# tokenizer.save_pretrained("./bert-cuad-qa")
+
+
+
+
+MODEL_PATH = Path(r"D:\\ContractIntelligence\\bert-cuad-qa-transformers-default-v4")
+
+if not (MODEL_PATH / "config.json").exists():
+    raise FileNotFoundError(
+        f"Model config not found: {MODEL_PATH}"
     )
 
-    sample_mapping = tokenized.pop(
-        "overflow_to_sample_mapping"
+tokenizer = AutoTokenizer.from_pretrained(str(MODEL_PATH))
+model = AutoModelForQuestionAnswering.from_pretrained(
+    str(MODEL_PATH)
+)
+
+# model.eval()
+
+# print("Saved model loaded successfully.")
+
+
+
+
+# # ============================================================
+# # 1. SETTINGS
+# # ============================================================
+
+# MAX_LENGTH = 384
+# DOC_STRIDE = 128
+BATCH_SIZE = 8
+N_BEST_SIZE = 20
+MAX_ANSWER_TOKENS = 100
+
+# # Baseline only; do not tune using validation results
+# NULL_SCORE_THRESHOLD = 0.0
+
+# # ============================================================
+# # 2. PREPARE VALIDATION EXAMPLES
+# # ============================================================
+
+examples = []
+
+for i, row in enumerate(validation_dataset):
+    examples.append({
+        "id": str(i),
+        "title": row["title"],
+        "context": row["context"],
+        "question": row["question"],
+        "answer_text": row["answer_text"] or "",
+        "answer_start": int(row["answer_start"]),
+        "is_impossible": bool(row["is_impossible"])
+    })
+# from transformers import AutoTokenizer
+
+# BASE_MODEL = "deepset/bert-base-cased-squad2"
+
+# base_tokenizer = AutoTokenizer.from_pretrained(
+#     BASE_MODEL,
+#     use_fast=True
+# )
+
+# print("Saved tokenizer is fast:", tokenizer.is_fast)
+# print("Base tokenizer is fast:", base_tokenizer.is_fast)
+
+# for name, tok in [
+#     ("Saved", tokenizer),
+#     ("Base", base_tokenizer)
+# ]:
+#     enc = tok(
+#         examples[23]["question"].strip(),
+#         examples[23]["context"],
+#         max_length=384,
+#         stride=128,
+#         truncation="only_second",
+#         return_overflowing_tokens=True,
+#         return_offsets_mapping=True,
+#         padding="max_length"
+#     )
+
+#     print(f"\n{name} tokenizer")
+#     print("Chunks:", len(enc["input_ids"]))
+#     print("Tokenizer maximum length:", tok.model_max_length)
+
+# import transformers
+
+# i = 23
+# ex = examples[i]
+
+# print("Transformers version:", transformers.__version__)
+# print("Fast tokenizer:", tokenizer.is_fast)
+
+# enc = tokenizer(
+#     text=ex["question"].strip(),
+#     text_pair=ex["context"],
+#     max_length=MAX_LENGTH,
+#     stride=128,
+#     truncation="only_second",
+#     return_overflowing_tokens=True,
+#     return_offsets_mapping=True,
+#     padding=False
+# )
+
+# print("\nReturned keys:", enc.keys())
+# print("Number of input sequences:", len(enc["input_ids"]))
+# print("Input lengths:", [len(x) for x in enc["input_ids"]])
+# print("Overflow mapping:", enc.get("overflow_to_sample_mapping"))
+
+# if "overflowing_tokens" in enc:
+#     print("Overflowing tokens:", len(enc["overflowing_tokens"]))
+
+# for j, ids in enumerate(enc["input_ids"]):
+#     print(f"Chunk {j}: token count = {len(ids)}")
+
+# # ============================================================
+# # 3. TOKENIZE WITH OVERFLOW FOR LONG CONTRACTS
+# # ============================================================
+
+
+features = []
+
+SPECIAL_TOKENS = tokenizer.num_special_tokens_to_add(pair=True)
+PAD_ID = tokenizer.pad_token_id
+
+if PAD_ID is None:
+    raise ValueError("Tokenizer has no pad token.")
+
+for example_index, ex in enumerate(examples):
+    question = ex["question"].strip()
+    context = ex["context"]
+
+    # Tokenize question and full context separately.
+    question_ids = tokenizer(
+        question,
+        add_special_tokens=False
+    )["input_ids"]
+
+    context_enc = tokenizer(
+        context,
+        add_special_tokens=False,
+        return_offsets_mapping=True
     )
 
-    offset_mapping = tokenized["offset_mapping"]
+    context_ids = context_enc["input_ids"]
+    context_offsets = context_enc["offset_mapping"]
 
-    start_positions = []
-    end_positions = []
+    # Leave enough room for question, context and special tokens.
+    max_context_tokens = (
+        MAX_LENGTH - len(question_ids) - SPECIAL_TOKENS
+    )
 
-    for i, offsets in enumerate(offset_mapping):
+    if max_context_tokens <= DOC_STRIDE:
+        raise ValueError(
+            f"Question {example_index} is too long for the "
+            "configured MAX_LENGTH and DOC_STRIDE."
+        )
 
-        sample_index = sample_mapping[i]
+    # Advance by window size minus overlap.
+    step = max_context_tokens - DOC_STRIDE
 
-        answer_start = examples["answer_start"][sample_index]
-        answer_text = examples["answer_text"][sample_index]
+    for chunk_start in range(0, len(context_ids), step):
+        chunk_end = min(
+            chunk_start + max_context_tokens,
+            len(context_ids)
+        )
 
-        is_impossible = examples["is_impossible"][sample_index]
+        window_ids = context_ids[chunk_start:chunk_end]
+        window_offsets = context_offsets[chunk_start:chunk_end]
 
-        # ------------------------------------------------
-        # SQuAD2: no answer
-        # ------------------------------------------------
+        # Construct a standard BERT question-context input.
+       # BERT input format: [CLS] question [SEP] context [SEP]
+        CLS_ID = tokenizer.cls_token_id
+        SEP_ID = tokenizer.sep_token_id
 
-        if is_impossible or not answer_text:
+        input_ids = (
+            [CLS_ID]
+            + question_ids
+            + [SEP_ID]
+            + window_ids
+            + [SEP_ID]
+        )
 
-            cls_index = tokenized["input_ids"][i].index(
-                tokenizer.cls_token_id
+        token_type_ids = (
+            [0] * (len(question_ids) + 2)
+            + [1] * (len(window_ids) + 1)
+        )
+
+        # BERT layout:
+        # [CLS] question [SEP] context-window [SEP]
+        offsets = (
+            [None] * (len(question_ids) + 2)
+            + list(window_offsets)
+            + [None]
+        )
+
+        attention_mask = [1] * len(input_ids)
+
+        # Pad every feature to MAX_LENGTH.
+        padding_length = MAX_LENGTH - len(input_ids)
+
+        if padding_length < 0:
+            raise ValueError(
+                f"Feature exceeds MAX_LENGTH: {len(input_ids)}"
             )
 
-            start_positions.append(cls_index)
-            end_positions.append(cls_index)
+        input_ids += [PAD_ID] * padding_length
+        attention_mask += [0] * padding_length
+        token_type_ids += [0] * padding_length
+        offsets += [None] * padding_length
 
+        features.append({
+            "example_index": example_index,
+            "input_ids": input_ids,
+            "attention_mask": attention_mask,
+            "token_type_ids": token_type_ids,
+            "offsets": offsets
+        })
+
+#         if chunk_end == len(context_ids):
+#             break
+
+# print("Total validation chunks:", len(features))
+# print("Features for example 23:", sum(
+#     f["example_index"] == 23 for f in features
+# ))
+
+# print("Validation chunks:", len(features))
+
+
+# print("Generated tokenized chunks:", len(enc["input_ids"]))
+# print(
+#     "Example indexes represented:",
+#     sorted(set(enc["overflow_to_sample_mapping"]))
+# )
+# i = 23
+# ex = examples[i]
+
+# print("Tokenizer:", tokenizer.name_or_path)
+# print("MAX_LENGTH:", MAX_LENGTH)
+# print("DOC_STRIDE:", DOC_STRIDE)
+# print("Context characters:", len(ex["context"]))
+
+# # Count tokens before applying truncation
+# context_tokens = tokenizer(
+#     ex["context"],
+#     add_special_tokens=False,
+#     truncation=False
+# )
+# print("Context tokens without truncation:",
+#       len(context_tokens["input_ids"]))
+
+# # Tokenize the question and full context with overflow
+# test_enc = tokenizer(
+#     ex["question"].strip(),
+#     ex["context"],
+#     max_length=MAX_LENGTH,
+#     stride=DOC_STRIDE,
+#     truncation="only_second",
+#     return_overflowing_tokens=True,
+#     return_offsets_mapping=True,
+#     padding="max_length"
+# )
+
+# print("Generated chunks:", len(test_enc["input_ids"]))
+
+# for j, offsets in enumerate(test_enc["offset_mapping"]):
+#     context_offsets = [
+#         (a, b)
+#         for k, (a, b) in enumerate(offsets)
+#         if test_enc.sequence_ids(j)[k] == 1 and b > a
+#     ]
+
+#     if context_offsets:
+#         print(
+#             f"Chunk {j}: "
+#             f"start={context_offsets[0][0]}, "
+#             f"end={context_offsets[-1][1]}"
+#         )
+
+# i = 23
+# ex = examples[i]
+
+# print("Question index:", i)
+# print("Contract title:", ex["title"])
+# print("Context length:", len(ex["context"]))
+# print("Answer start:", ex["answer_start"])
+# print("Answer text:", repr(ex["answer_text"]))
+
+# chunk_features = [
+#     f for f in features
+#     if f["example_index"] == i
+# ]
+
+# print("Chunks for this question:", len(chunk_features))
+
+# for n, feature in enumerate(chunk_features):
+#     offsets = [
+#         o for o in feature["offsets"]
+#         if o is not None
+#     ]
+
+#     if offsets:
+#         print(
+#             n,
+#             "start =", offsets[0][0],
+#             "end =", offsets[-1][1]
+#         )
+
+
+# # Inspect why one answer is not considered covered.
+# # Use index 23, the Anti-Assignment example.
+# # Inspect one uncovered reference
+# i = 23
+
+# ex = examples[i]
+
+# print("Example index:", i)
+# print("Contract title:", ex.get("title"))
+# print("Context length:", len(ex["context"]))
+# print("Answer start:", ex["answer_start"])
+# print("Answer length:", len(ex["answer_text"]))
+
+# start = ex["answer_start"]
+# end = start + len(ex["answer_text"])
+
+# print("Answer matches original context:",
+#       ex["context"][start:end] == ex["answer_text"])
+
+# print("Context around answer:")
+# print(repr(ex["context"][max(0, start - 100):end + 100]))
+
+# # Inspect all features mapped to this example
+# chunk_features = [
+#     f for f in features
+#     if f["example_index"] == i
+# ]
+
+# print("Number of chunks:", len(chunk_features))
+
+# for n, feature in enumerate(chunk_features):
+#     offsets = [
+#         o for o in feature["offsets"]
+#         if o is not None and o[1] > o[0]
+#     ]
+
+#     if offsets:
+#         print(
+#             f"Chunk {n}: "
+#             f"start={offsets[0][0]}, "
+#             f"end={offsets[-1][1]}"
+#         )
+
+# covered = 0
+# not_covered = []
+# answerable_count = 0
+# offset_mismatches = []
+
+# for i, ex in enumerate(examples):
+
+#     answer = ex["answer_text"]
+
+#     if ex["is_impossible"] or not answer.strip():
+#         continue
+
+#     answerable_count += 1
+
+#     context = ex["context"]
+#     answer_start = ex["answer_start"]
+#     answer_end = answer_start + len(answer)
+
+#     # Validate the original character offset.
+#     if context[answer_start:answer_end] != answer:
+#         offset_mismatches.append(i)
+#         continue
+
+#     found_in_chunk = False
+
+#     for feature in features:
+
+#         if feature["example_index"] != i:
+#             continue
+
+#         valid_offsets = [
+#             offset
+#             for offset in feature["offsets"]
+#             if offset is not None
+#         ]
+
+#         if not valid_offsets:
+#             continue
+
+#         chunk_start = valid_offsets[0][0]
+#         chunk_end = valid_offsets[-1][1]
+
+#         # Does this chunk contain the complete answer span?
+#         if (
+#             chunk_start <= answer_start
+#             and chunk_end >= answer_end
+#         ):
+#             found_in_chunk = True
+#             break
+
+#     if found_in_chunk:
+#         covered += 1
+#     else:
+#         not_covered.append({
+#             "index": i,
+#             "question": ex["question"],
+#             "answer": answer[:150],
+#             "answer_start": answer_start,
+#             "answer_length_chars": len(answer)
+#         })
+
+# print("Answerable validation references:", answerable_count)
+# print("References covered:", covered)
+# print("References not covered:", len(not_covered))
+# print("Offset mismatches:", len(offset_mismatches))
+
+# for item in not_covered[:10]:
+#     print(item)
+
+
+
+# long_answers = []
+
+# for i, ex in enumerate(examples):
+
+#     if ex["is_impossible"] or not ex["answer_text"].strip():
+#         continue
+
+#     answer_start = ex["answer_start"]
+#     answer_end = answer_start + len(ex["answer_text"])
+
+#     for feature in features:
+#         if feature["example_index"] != i:
+#             continue
+
+#         valid_offsets = [
+#             offset
+#             for offset in feature["offsets"]
+#             if offset is not None
+#         ]
+
+#         if not valid_offsets:
+#             continue
+
+#         token_positions = [
+#             j for j, offset in enumerate(feature["offsets"])
+#             if offset is not None
+#             and offset[0] < answer_end
+#             and offset[1] > answer_start
+#         ]
+
+#         if not token_positions:
+#             continue
+
+#         token_count = (
+#             max(token_positions) - min(token_positions) + 1
+#         )
+
+#         if (
+#             valid_offsets[0][0] <= answer_start
+#             and valid_offsets[-1][1] >= answer_end
+#             and token_count > MAX_ANSWER_TOKENS
+#         ):
+#             long_answers.append(i)
+
+#             break
+
+# print(
+#     "References exceeding the answer-token limit:",
+#     len(set(long_answers))
+# )
+
+# # QUICK TEST ONLY — first 100 validation questions
+# N_SAMPLE = min(100, len(examples))
+
+# examples = examples[:N_SAMPLE]
+# features = [
+#     f for f in features
+#     if f["example_index"] < N_SAMPLE
+# ]
+
+# print("Sample questions:", len(examples))
+# print("Sample chunks:", len(features), flush=True)
+
+# # Reduce decoding work for this quick test
+# BATCH_SIZE = 16 if torch.cuda.is_available() else 4
+# N_BEST_SIZE = 5
+# # 3. Continue with your EXISTING model prediction loop
+# # Your existing code that runs model(**inputs)
+
+# # ============================================================
+# # 4. RUN INFERENCE ON THE SAVED MODEL
+# # ============================================================
+
+device = next(model.parameters()).device
+model.eval()
+
+best_answers = [
+    {"text": "", "score": -float("inf")}
+    for _ in examples
+]
+
+null_scores = [float("inf")] * len(examples)
+
+for start in range(0, len(features), BATCH_SIZE):
+    batch = features[start:start + BATCH_SIZE]
+
+    inputs = {}
+    for key in ("input_ids", "attention_mask", "token_type_ids"):
+        if key in batch[0]:
+            inputs[key] = torch.tensor(
+                [f[key] for f in batch],
+                dtype=torch.long,
+                device=device
+            )
+
+    with torch.inference_mode():
+        outputs = model(**inputs)
+
+    start_logits = outputs.start_logits.cpu().numpy()
+    end_logits = outputs.end_logits.cpu().numpy()
+
+    for j, feature in enumerate(batch):
+        example_index = feature["example_index"]
+        offsets = feature["offsets"]
+        cls_index = feature["input_ids"].index(
+            tokenizer.cls_token_id
+        )
+
+        null_score = float(
+            start_logits[j, cls_index]
+            + end_logits[j, cls_index]
+        )
+
+        null_scores[example_index] = min(
+            null_scores[example_index], null_score
+        )
+
+        valid = [
+            k for k, offset in enumerate(offsets)
+            if offset is not None
+        ]
+
+        if not valid:
             continue
 
-        answer_end = answer_start + len(answer_text)
+        s_logits = start_logits[j].copy()
+        e_logits = end_logits[j].copy()
 
-        # ------------------------------------------------
-        # Find context token boundaries
-        # ------------------------------------------------
+        invalid = np.ones(len(offsets), dtype=bool)
+        invalid[valid] = False
 
-        sequence_ids = tokenized.sequence_ids(i)
+        s_logits[invalid] = -1e9
+        e_logits[invalid] = -1e9
 
-        context_start = 0
+        top_starts = np.argsort(s_logits)[-N_BEST_SIZE:][::-1]
+        top_ends = np.argsort(e_logits)[-N_BEST_SIZE:][::-1]
 
-        while (
-            context_start < len(sequence_ids)
-            and sequence_ids[context_start] != 1
-        ):
-            context_start += 1
+        context = examples[example_index]["context"]
 
-        context_end = len(sequence_ids) - 1
+        for s in top_starts:
+            if offsets[s] is None:
+                continue
 
-        while (
-            context_end >= 0
-            and sequence_ids[context_end] != 1
-        ):
-            context_end -= 1
+            for e in top_ends:
+                if offsets[e] is None or e < s:
+                    continue
 
-        # Answer is outside this chunk
-        if (
-            offsets[context_start][0] > answer_start
-            or offsets[context_end][1] < answer_end
-        ):
+                if e - s + 1 > MAX_ANSWER_TOKENS:
+                    continue
 
-            cls_index = tokenized["input_ids"][i].index(
-                tokenizer.cls_token_id
-            )
+                char_start = offsets[s][0]
+                char_end = offsets[e][1]
 
-            start_positions.append(cls_index)
-            end_positions.append(cls_index)
+                answer = context[char_start:char_end].strip()
+                if not answer:
+                    continue
 
-        else:
+                score = float(start_logits[j, s] + end_logits[j, e])
 
-            # Find start token
-            token_start = context_start
+                if score > best_answers[example_index]["score"]:
+                    best_answers[example_index] = {
+                        "text": answer,
+                        "score": score
+                    }
+# # DIAGNOSTIC ONLY — do not change the threshold yet
 
-            while (
-                token_start <= context_end
-                and offsets[token_start][0] <= answer_start
-            ):
-                token_start += 1
+print("Number of candidate answers:", len(best_answers))
+print("First candidate object:")
+print(best_answers[0])
 
-            start_positions.append(token_start - 1)
+print("\nFirst null score:")
+print(null_scores[0])
+# # Use the threshold selected from your validation experiments.
+# # This is a starting point from your reported experiments,
+# # not a universally optimal threshold.
+# NULL_SCORE_THRESHOLD = 27.0
 
-            # Find end token
-            token_end = context_end
+# predictions = []
 
-            while (
-                token_end >= context_start
-                and offsets[token_end][1] >= answer_end
-            ):
-                token_end -= 1
+# for i, best in enumerate(best_answers):
+#     if best["score"] == -float("inf"):
+#         prediction = ""
+#     else:
+#         score_diff = null_scores[i] - best["score"]
 
-            end_positions.append(token_end + 1)
+#         if score_diff > NULL_SCORE_THRESHOLD:
+#             prediction = ""
+#         else:
+#             prediction = best["text"]
 
-    tokenized["start_positions"] = start_positions
-    tokenized["end_positions"] = end_positions
+#     predictions.append(prediction)
 
-    return tokenized
 
-tokenized_train = train_dataset.map(
-    preprocess_function,
-    batched=True,
-    remove_columns=train_dataset.column_names
+#     if examples[i]["answer_text"].strip() and prediction == "":
+#         print("\nANSWERABLE QUESTION REJECTED")
+#         print("Question:", examples[i]["question"])
+#         print("Reference:", examples[i]["answer_text"][:150])
+#         print("Best candidate:", repr(best["text"]))
+#         print("Best answer score:", best["score"])
+#         print("Null score:", null_scores[i])
+#         print("Null minus answer:", null_scores[i] - best["score"])
+
+# print("Predictions completed.")
+
+
+# for start in range(0, len(features), BATCH_SIZE):
+#     # Keep your existing batch inference code here
+
+#     if start % (BATCH_SIZE * 100) == 0:
+#         print(
+#             f"Processed {min(start + BATCH_SIZE, len(features))}"
+#             f" / {len(features)} chunks",
+#             flush=True
+#         )
+
+
+# # ============================================================
+# # 5. FRESH CUAD QA EVALUATION
+# # Run after best_answers and null_scores are computed.
+# # ============================================================
+
+# import re
+# import string
+# import numpy as np
+# import pandas as pd
+# from collections import Counter
+# from sklearn.metrics import (
+#     accuracy_score,
+#     precision_score,
+#     recall_score,
+#     f1_score,
+#     confusion_matrix
+# )
+
+# # ------------------------------------------------------------
+# # A. ANSWER NORMALIZATION, EXACT MATCH AND TOKEN F1
+# # ------------------------------------------------------------
+
+# def normalize_answer(text):
+#     text = str(text).lower()
+#     text = "".join(
+#         ch for ch in text if ch not in string.punctuation
+#     )
+#     text = re.sub(r"\b(a|an|the)\b", " ", text)
+#     return " ".join(text.split())
+
+
+# def exact_match(reference, prediction):
+#     return float(
+#         normalize_answer(reference)
+#         == normalize_answer(prediction)
+#     )
+
+
+# def token_f1(reference, prediction):
+#     ref_tokens = normalize_answer(reference).split()
+#     pred_tokens = normalize_answer(prediction).split()
+
+#     if not ref_tokens and not pred_tokens:
+#         return 1.0
+
+#     if not ref_tokens or not pred_tokens:
+#         return 0.0
+
+#     common = Counter(ref_tokens) & Counter(pred_tokens)
+#     overlap = sum(common.values())
+
+#     if overlap == 0:
+#         return 0.0
+
+#     precision = overlap / len(pred_tokens)
+#     recall = overlap / len(ref_tokens)
+
+#     return 2 * precision * recall / (precision + recall)
+
+
+# # ------------------------------------------------------------
+# # B. VALIDATE INPUTS
+# # ------------------------------------------------------------
+
+# assert len(examples) == len(best_answers) == len(null_scores), (
+#     "Mismatch between examples, candidates and null scores."
+# )
+
+# assert all(
+#     np.isfinite(x["score"]) for x in best_answers
+# ), "A candidate score is missing or non-finite."
+
+# assert all(
+#     np.isfinite(x) for x in null_scores
+# ), "A null score is missing or non-finite."
+
+# references = [
+#     str(ex.get("answer_text", "") or "").strip()
+#     for ex in examples
+# ]
+
+# # Use CUAD's ground-truth label, not the prediction.
+# is_answerable = np.array([
+#     not bool(ex["is_impossible"])
+#     for ex in examples
+# ], dtype=bool)
+
+# assert is_answerable.any(), "No answerable examples found."
+# assert (~is_answerable).any(), "No unanswerable examples found."
+
+# score_diffs = np.array([
+#     null_scores[i] - best_answers[i]["score"]
+#     for i in range(len(examples))
+# ])
+
+# print("\nTotal questions:", len(examples))
+# print("Answerable:", int(is_answerable.sum()))
+# print("Unanswerable:", int((~is_answerable).sum()))
+
+# # ------------------------------------------------------------
+# # C. EVALUATE ONE THRESHOLD
+# #
+# # null - candidate > threshold -> predict empty
+# # otherwise -> predict candidate
+# # ------------------------------------------------------------
+
+# def evaluate_threshold(threshold):
+#     predictions = []
+
+#     for i, candidate in enumerate(best_answers):
+#         if score_diffs[i] > threshold:
+#             prediction = ""
+#         else:
+#             prediction = candidate["text"].strip()
+
+#         predictions.append(prediction)
+
+#     em = np.array([
+#         exact_match(references[i], predictions[i])
+#         for i in range(len(examples))
+#     ])
+
+#     f1 = np.array([
+#         token_f1(references[i], predictions[i])
+#         for i in range(len(examples))
+#     ])
+
+#     answerable_em = em[is_answerable]
+#     answerable_f1 = f1[is_answerable]
+
+#     unanswerable_em = em[~is_answerable]
+#     unanswerable_f1 = f1[~is_answerable]
+
+#     # Predict answerable when output is non-empty.
+#     predicted_answerable = np.array([
+#         bool(p.strip()) for p in predictions
+#     ])
+
+#     y_true = is_answerable.astype(int)
+#     y_pred = predicted_answerable.astype(int)
+
+#     return {
+#         "threshold": threshold,
+#         "overall_em": em.mean() * 100,
+#         "overall_f1": f1.mean() * 100,
+#         "answerable_em": answerable_em.mean() * 100,
+#         "answerable_f1": answerable_f1.mean() * 100,
+#         "unanswerable_em": unanswerable_em.mean() * 100,
+#         "unanswerable_f1": unanswerable_f1.mean() * 100,
+#         "answerability_precision": precision_score(
+#             y_true, y_pred, zero_division=0
+#         ) * 100,
+#         "answerability_recall": recall_score(
+#             y_true, y_pred, zero_division=0
+#         ) * 100,
+#         "answerability_f1": f1_score(
+#             y_true, y_pred, zero_division=0
+#         ) * 100,
+#         "empty_answer_rate": (
+#             np.mean([not p.strip() for p in predictions]) * 100
+#         ),
+#         "predictions": predictions
+#     }
+
+
+# # ------------------------------------------------------------
+# # D. THRESHOLD COMPARISON
+# # ------------------------------------------------------------
+
+# thresholds = [-5, -2, 0, 1, 2, 3, 4, 5, 6, 8, 10]
+
+# evaluation_results = [
+#     evaluate_threshold(t) for t in thresholds
+# ]
+
+# threshold_table = pd.DataFrame([
+#     {k: v for k, v in result.items() if k != "predictions"}
+#     for result in evaluation_results
+# ])
+
+# print("\nTHRESHOLD COMPARISON")
+# print(
+#     threshold_table.round(2).to_string(index=False)
+# )
+
+# # IMPORTANT:
+# # Use these results to understand the trade-off.
+# # Do not choose a final threshold based on held-out test data.
+
+# # ------------------------------------------------------------
+# # E. SELECT A THRESHOLD FOR DIAGNOSTIC VALIDATION
+# # ------------------------------------------------------------
+
+# # Set this to the threshold selected using a separate calibration
+# # split. Threshold 0 is only a neutral baseline, not a guaranteed
+# # optimal threshold.
+# SELECTED_THRESHOLD = 0.0
+
+# final_result = evaluate_threshold(SELECTED_THRESHOLD)
+# final_predictions = final_result["predictions"]
+
+# print("\nSELECTED THRESHOLD:", SELECTED_THRESHOLD)
+# print("\nFINAL VALIDATION METRICS")
+
+# for key in [
+#     "overall_em",
+#     "overall_f1",
+#     "answerable_em",
+#     "answerable_f1",
+#     "unanswerable_em",
+#     "unanswerable_f1",
+#     "answerability_precision",
+#     "answerability_recall",
+#     "answerability_f1",
+#     "empty_answer_rate"
+# ]:
+#     print(f"{key}: {final_result[key]:.2f}%")
+
+# # ------------------------------------------------------------
+# # F. SHOW UNANSWERABLE CLASSIFICATION ERRORS
+# # ------------------------------------------------------------
+
+# y_true = is_answerable.astype(int)
+# y_pred = np.array([
+#     bool(p.strip()) for p in final_predictions
+# ], dtype=int)
+
+# print("\nANSWERABILITY CONFUSION MATRIX")
+# print("Rows: actual [unanswerable, answerable]")
+# print("Columns: predicted [unanswerable, answerable]")
+# print(confusion_matrix(y_true, y_pred, labels=[0, 1]))
+
+# # ------------------------------------------------------------
+# # G. SAVE ALL PREDICTIONS FOR REVIEW
+# # ------------------------------------------------------------
+
+# output_rows = []
+
+# for i, ex in enumerate(examples):
+#     prediction = final_predictions[i]
+#     reference = references[i]
+
+#     output_rows.append({
+#         "question": ex["question"],
+#         "reference": reference,
+#         "prediction": prediction,
+#         "is_impossible": bool(ex["is_impossible"]),
+#         "candidate_score": best_answers[i]["score"],
+#         "null_score": null_scores[i],
+#         "null_minus_candidate": score_diffs[i],
+#         "EM": exact_match(reference, prediction),
+#         "F1": token_f1(reference, prediction),
+#         "correct_answerability": (
+#             bool(prediction.strip()) == bool(is_answerable[i])
+#         )
+#     })
+
+# results_df = pd.DataFrame(output_rows)
+
+# OUTPUT_CSV = (
+#     r"D:\\ContractIntelligence\\bert_validation_predictions.csv"
+# )
+
+# results_df.to_csv(
+#     OUTPUT_CSV,
+#     index=False,
+#     encoding="utf-8-sig"
+# )
+
+# print("\nSaved evaluation:", OUTPUT_CSV)
+
+# # Display the worst answerable predictions for diagnosis.
+# print("\nLOWEST-F1 ANSWERABLE QUESTIONS")
+
+# poor = results_df[
+#     ~results_df["is_impossible"]
+# ].sort_values("F1", ascending=True)
+
+# print(
+#     poor[
+#         ["question", "reference", "prediction", "EM", "F1"]
+#     ].head(10).to_string(index=False)
+# )
+
+# print("\nEvaluation completed.")
+
+
+import pandas as pd
+import matplotlib.pyplot as plt
+
+csv_path = r"D:\\ContractIntelligence\\bert_validation_predictions.csv"
+df = pd.read_csv(csv_path)
+
+
+# import pandas as pd
+
+# df = pd.read_csv(
+#     r"D:\ContractIntelligence\bert_validation_predictions.csv"
+# )
+
+print("CSV rows:", len(df))
+print("\nRaw is_impossible values:")
+print(df["is_impossible"].value_counts(dropna=False))
+
+print("\nAnswerability label counts:")
+print(df["is_impossible"].astype(str).str.strip().str.lower()
+      .value_counts(dropna=False))
+
+print("\nEmpty predictions by label:")
+print(
+    df.assign(
+        prediction_empty=df["prediction"].fillna("").str.strip().eq("")
+    ).groupby("is_impossible")["prediction_empty"].agg(
+        total="count",
+        empty="sum"
+    )
 )
+# print("Number of candidate answers:", len(best_answers))
+# print("First candidate object:")
+# print(best_answers[0])
 
-tokenized_validation = validation_dataset.map(
-    preprocess_function,
-    batched=True,
-    remove_columns=validation_dataset.column_names
-)
+# print("\nFirst null score:")
+# print(null_scores[0])
 
-from transformers import AutoModelForQuestionAnswering
+# print("CSV columns:")
+# print(df.columns.tolist())
 
-model = AutoModelForQuestionAnswering.from_pretrained(
-    MODEL_NAME
-)
-
-from transformers import TrainingArguments
-
-training_args = TrainingArguments(
-    output_dir="./bert-cuad-qa",
-
-    eval_strategy="epoch",
-    save_strategy="epoch",
-
-    learning_rate=3e-5,
-
-    per_device_train_batch_size=8,
-    per_device_eval_batch_size=8,
-
-    num_train_epochs=2,
-
-    weight_decay=0.01,
-
-    logging_steps=100,
-
-    load_best_model_at_end=True,
-
-    report_to="none"
-)
-
-from transformers import Trainer
-
-trainer = Trainer(
-    model=model,
-    args=training_args,
-    train_dataset=tokenized_train,
-    eval_dataset=tokenized_validation
-)
-
-trainer.train()
-
-trainer.save_model("./bert-cuad-qa")
-
-tokenizer.save_pretrained("./bert-cuad-qa")
+# # Inspect the actual saved predictions
+# print(df.head(10))
 
 
+# import pandas as pd
 
+# csv_path = r"D:\\ContractIntelligence\\bert_validation_predictions.csv"
+# df = pd.read_csv(csv_path)
+
+# Convert values safely
+# df["prediction"] = df["prediction"].fillna("").astype(str)
+# df["reference"] = df["reference"].fillna("").astype(str)
+# df["is_impossible"] = (
+#     df["is_impossible"].astype(str).str.strip().str.lower()
+#     .map({"true": True, "false": False, "1": True, "0": False})
+# )
+
+# # Answerable questions only
+# answerable = df[df["is_impossible"] == False].copy()
+
+# answerable["prediction_empty"] = (
+#     answerable["prediction"].str.strip() == ""
+# )
+# answerable["exact_match"] = answerable["EM"] == 1
+# answerable["zero_f1"] = answerable["F1"] == 0
+
+# print("Answerable questions:", len(answerable))
+# print("Empty predictions:", answerable["prediction_empty"].sum())
+# print("Exact matches:", answerable["exact_match"].sum())
+# print("Zero-F1 predictions:", answerable["zero_f1"].sum())
+# print(
+#     "Non-empty predictions with zero F1:",
+#     (
+#         ~answerable["prediction_empty"] & answerable["zero_f1"]
+#     ).sum()
+# )
+
+# print("\n--- Empty answer examples ---")
+# print(
+#     answerable.loc[
+#         answerable["prediction_empty"],
+#         ["question", "reference", "prediction",
+#          "null_minus_candidate", "EM", "F1"]
+#     ].head(10)
+# )
+
+# print("\n--- Non-empty answers with zero F1 ---")
+# print(
+#     answerable.loc[
+#         ~answerable["prediction_empty"] & answerable["zero_f1"],
+#         ["question", "reference", "prediction",
+#          "candidate_score", "null_score",
+#          "null_minus_candidate", "EM", "F1"]
+#     ].head(10)
+# )

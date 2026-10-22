@@ -10,7 +10,7 @@ import re
 from dataclasses import dataclass, field
 from pathlib import Path
 
-from .config import (
+from config import (
     TEST_PATH,
     TRAIN_SEPARATE_PATH,
     CUADV1_PATH,

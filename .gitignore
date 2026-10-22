@@ -1,6 +1,7 @@
 # Trained models
 bert-cuad-download/
 bert-cuad-date-duration/
+validation_results/validation_examples.json
 
 # Logs
 *.log
@@ -14,3 +15,8 @@ contractenv/
 
 #csv file
 cuad_date_duration.csv
+bert-cuad-qa-transformers-default-v4/
+bert_cuad_download/
+bert_validation_predictions.csv
+validation_results.zip
+validation_results/

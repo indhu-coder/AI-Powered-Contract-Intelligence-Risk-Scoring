@@ -10,7 +10,7 @@ st.title("Contract Intelligence QA System")
 # LOAD MODEL
 # ============================================================
 
-MODEL_PATH = r"D:\\ContractIntelligence\\bert-cuad-download"
+MODEL_PATH = r"D:\\ContractIntelligence\\bert-cuad-qa-transformers-default-v4"
 
 tokenizer = AutoTokenizer.from_pretrained(MODEL_PATH)
 model = AutoModelForQuestionAnswering.from_pretrained(MODEL_PATH)
@@ -631,7 +631,6 @@ df["legal_entities"] = (
 # GROUP LEGAL ENTITIES BY LABEL
 # ============================================================
 
-st.subheader("Extracted Legal Entities")
 
 entities_df = pd.DataFrame(df["legal_entities"].iloc[0])
 
@@ -646,9 +645,85 @@ if not entities_df.empty:
 
 grouped_entities.columns = ["Label", "Extracted Entities"]
 
-selected_label = st.selectbox("Select a label to view extracted entities:", options=grouped_entities["Label"].unique(), key="label_dropdown") 
-selected_entities = grouped_entities[grouped_entities["Label"] == selected_label]["Extracted Entities"].values[0]
-st.write(f"Extracted entities for label '{selected_label}': {selected_entities}")
+# ============================================================
+# ENTITY RULER + QUESTION-AWARE ANSWER EXTRACTION
+# ============================================================
+
+def get_rule_answer(question, text):
+    doc = nlp(text)
+    q = question.lower()
+
+    # Determine what the question is asking for
+    if any(k in q for k in ["notice period", "how many days", "how long"]):
+        target = "duration"
+        keywords = ["notice", "termination", "renewal", "terminate"]
+
+    elif "effective date" in q:
+        target = "date"
+        keywords = ["effective", "commencement", "commence"]
+
+    elif "agreement date" in q or "execution date" in q:
+        target = "date"
+        keywords = ["agreement", "executed", "dated", "date"]
+
+    elif any(k in q for k in ["expiration date", "expiry date", "expiry"]):
+        target = "date"
+        keywords = ["expiration", "expire", "expiry", "expires"]
+
+    elif "termination date" in q:
+        target = "date"
+        keywords = ["termination", "terminate", "terminated"]
+
+    elif "renewal date" in q or "renewal term" in q:
+        target = "duration" if "term" in q else "date"
+        keywords = ["renewal", "renew", "automatically renew"]
+
+    elif any(k in q for k in ["termination", "terminate"]):
+        target = "clause"
+        keywords = ["termination", "terminate", "terminated"]
+
+    elif "confidential" in q:
+        target = "clause"
+        keywords = ["confidential", "non-disclosure"]
+
+    elif "governing law" in q or "which law" in q:
+        target = "clause"
+        keywords = ["governing law", "governed by the laws"]
+
+    else:
+        return None
+
+    # Examine relevant sentences rather than unrelated entities
+    for sent in doc.sents:
+        sentence = sent.text.strip()
+        sentence_lower = sentence.lower()
+
+        if not any(k in sentence_lower for k in keywords):
+            continue
+
+        if target == "clause":
+            return sentence
+
+        # Look for ruler/NER entities inside this sentence
+        relevant_labels = (
+            {"DURATION", "NOTICE_PERIOD"}
+            if target == "duration"
+            else {"EXACT_DATE", "DATE", "EFFECTIVE_DATE",
+                  "AGREEMENT_DATE", "EXPIRATION"}
+        )
+
+        matches = [
+            ent.text
+            for ent in sent.ents
+            if ent.label_ in relevant_labels
+        ]
+
+        if matches:
+            # Return the actual date/duration, not a made-up value
+            return ", ".join(dict.fromkeys(matches))
+
+    # No relevant entity found: allow BERT to answer
+    return None
 
 
 
@@ -657,14 +732,16 @@ st.write(f"Extracted entities for label '{selected_label}': {selected_entities}"
 # TOKENIZATION
 # ============================================================
 
-
 inputs = tokenizer(
     question,
     text,
-    return_tensors="pt",
     truncation="only_second",
     max_length=384,
-    return_offsets_mapping=True
+    stride=128,
+    return_overflowing_tokens=True,
+    return_offsets_mapping=True,
+    padding="max_length",
+    return_tensors="pt"
 )
 
 offset_mapping = inputs.pop("offset_mapping")
@@ -704,7 +781,9 @@ for start in range(len(start_logits)):
     if sequence_ids[start] != 1:
         continue
 
-    for end in range(start, min(start + 30, len(end_logits))):
+    for end in range(
+    start,
+    min(start + MAX_ANSWER_LENGTH, len(end_logits))):
 
         if sequence_ids[end] != 1:
             continue
@@ -736,8 +815,21 @@ else:
 
 
 # ============================================================
-# OUTPUT
+# FINAL ANSWER: ENTITY RULER + BERT
 # ============================================================
 
-st.write("Answer: " + answer)
-st.write("Best score: " + str(best_score))
+rule_answer = get_rule_answer(question, text)
+
+if rule_answer:
+    final_answer = rule_answer
+    st.caption("Answer source: Legal entity and sentence matching")
+elif answer.strip():
+    final_answer = answer
+    st.caption("Answer source: BERT QA model")
+else:
+    final_answer = "No answer found in the contract."
+
+st.write("### Answer")
+st.write(final_answer)
+
+st.write("BERT score:", best_score)

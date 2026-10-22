@@ -18,8 +18,8 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
-from .config import WindowConfig
-from .cuad_loader import ContractRecord
+from config import WindowConfig
+from cuad_loader import ContractRecord
 
 
 class ChunkingError(RuntimeError):
