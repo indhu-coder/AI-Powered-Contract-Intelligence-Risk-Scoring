@@ -1,24 +1,24 @@
+
 #!/usr/bin/env python
-"""Generate ml/configs/clauses.json from the actual CUAD question templates.
+"""Generate the ContractIQ clause registry from CUAD v1 question templates."""
 
-Extracts the exact question text for all 41 categories from
-data/raw/CUADv1.json and marks the 15 Version-1 clauses as enabled.
-Re-run any time the registry needs regeneration:
-
-    python scripts/generate_clause_config.py
-"""
 from __future__ import annotations
 
 import json
 import re
 import sys
 from pathlib import Path
+from typing import Any
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 RAW_CUAD = PROJECT_ROOT / "data" / "raw" / "CUADv1.json"
-OUT_PATH = PROJECT_ROOT / "ml" / "configs" / "clauses.json"
+OUTPUT_FILE = PROJECT_ROOT / "ml" / "configs" / "clauses.json"
 
-V1_LABELS = {
+CUAD_CATEGORY_PATTERN = re.compile(
+    r'related to "(.+?)" that should be reviewed'
+)
+
+VERSION_1_CLAUSES = {
     "Document Name": "document_name",
     "Parties": "parties",
     "Agreement Date": "agreement_date",
@@ -36,71 +36,177 @@ V1_LABELS = {
     "Insurance": "insurance",
 }
 
-CATEGORY_RE = re.compile(r'related to "(.+?)" that should be reviewed')
+INFERENCE_SETTINGS = {
+    "max_seq_len": 512,
+    "doc_stride": 128,
+    "max_answer_tokens": 64,
+    "no_answer_threshold": 0.35,
+    "min_confidence": 0.25,
+}
+
+RISK_BANDS = {
+    "low_max": 30,
+    "medium_max": 60,
+    "note": "0-30 LOW, 31-60 MEDIUM, 61-100 HIGH (configurable; heuristic engine only).",
+}
+
+EXPECTED_CATEGORY_COUNT = 41
+GENERATED_DATE = "2026-08-30"
 
 
-def main() -> int:
-    if not RAW_CUAD.exists():
-        print("ERROR: data/raw/CUADv1.json not found. Extract data.zip first.", file=sys.stderr)
-        return 1
+def load_cuad_dataset(path: Path) -> dict[str, Any]:
+    """Load and validate the CUAD JSON dataset."""
+    if not path.is_file():
+        raise FileNotFoundError(
+            f"CUAD dataset not found: {path}. Extract data.zip first."
+        )
 
-    with RAW_CUAD.open("r", encoding="utf-8") as f:
-        data = json.load(f)
+    try:
+        with path.open("r", encoding="utf-8") as file:
+            dataset = json.load(file)
+    except json.JSONDecodeError as exc:
+        raise ValueError(
+            f"Invalid JSON in CUAD dataset: {exc}"
+        ) from exc
 
-    questions: dict[str, str] = {}
-    for item in data["data"]:
-        for qa in item["paragraphs"][0]["qas"]:
-            m = CATEGORY_RE.search(qa.get("question", ""))
-            if m:
-                questions.setdefault(m.group(1), qa["question"])
+    if not isinstance(dataset, dict) or not isinstance(
+        dataset.get("data"), list
+    ):
+        raise ValueError(
+            "Invalid CUAD dataset structure: expected a top-level 'data' list."
+        )
 
-    if len(questions) != 41:
-        print(f"FATAL: expected 41 categories, found {len(questions)}", file=sys.stderr)
-        return 1
+    return dataset
 
-    missing = [c for c in V1_LABELS if c not in questions]
-    if missing:
-        print(f"FATAL: V1 clauses not found in dataset: {missing}", file=sys.stderr)
-        return 1
 
-    clauses = [{
-        "label": V1_LABELS.get(cat, ""),
-        "cuad_category": cat,
-        "enabled": cat in V1_LABELS,
-        "question": questions[cat],
-    } for cat in sorted(questions)]
+def extract_question_templates(
+    dataset: dict[str, Any],
+) -> dict[str, str]:
+    """Extract one original question template for each CUAD category."""
+    templates: dict[str, str] = {}
 
-    config = {
+    for document in dataset["data"]:
+        paragraphs = document.get("paragraphs", [])
+
+        if not paragraphs or not isinstance(paragraphs[0], dict):
+            continue
+
+        questions = paragraphs[0].get("qas", [])
+
+        for question_data in questions:
+            if not isinstance(question_data, dict):
+                continue
+
+            question_text = question_data.get("question", "")
+            if not isinstance(question_text, str):
+                continue
+
+            match = CUAD_CATEGORY_PATTERN.search(question_text)
+            if match:
+                category = match.group(1)
+                templates.setdefault(category, question_text)
+
+    if len(templates) != EXPECTED_CATEGORY_COUNT:
+        raise ValueError(
+            f"Expected {EXPECTED_CATEGORY_COUNT} CUAD categories, "
+            f"but extracted {len(templates)}."
+        )
+
+    missing_categories = sorted(
+        set(VERSION_1_CLAUSES) - set(templates)
+    )
+
+    if missing_categories:
+        raise ValueError(
+            f"Version-1 categories missing from CUAD: {missing_categories}"
+        )
+
+    return templates
+
+
+def build_clause_registry(
+    templates: dict[str, str],
+) -> dict[str, Any]:
+    """Build the complete ContractIQ configuration."""
+    clauses = []
+
+    for category in sorted(templates):
+        enabled = category in VERSION_1_CLAUSES
+
+        clauses.append({
+            "label": VERSION_1_CLAUSES.get(category, ""),
+            "cuad_category": category,
+            "enabled": enabled,
+            "question": templates[category],
+        })
+
+    enabled_count = sum(
+        1 for clause in clauses if clause["enabled"]
+    )
+
+    return {
         "_meta": {
-            "description": "ContractIQ central clause registry. Generated from the actual "
-                           "CUAD question templates in data/raw/CUADv1.json "
-                           "(see scripts/generate_clause_config.py). To enable a new clause "
-                           "later, set \"enabled\": true and assign a stable \"label\".",
+            "description": (
+                "ContractIQ central clause registry. Generated from the "
+                "actual CUAD question templates in data/raw/CUADv1.json "
+                "(see scripts/generate_clause_config.py). To enable a new "
+                "clause later, set \"enabled\": true and assign a stable "
+                "\"label\"."
+            ),
             "dataset": "CUAD v1 (Henriksson et al., 2021)",
-            "generated_at": "2026-08-30",
+            "generated_at": GENERATED_DATE,
             "n_categories_total": len(clauses),
-            "n_enabled_v1": sum(1 for c in clauses if c["enabled"]),
-            "disclaimer": "AI-assisted analysis. Results should be reviewed by a qualified professional.",
+            "n_enabled_v1": enabled_count,
+            "disclaimer": (
+                "AI-assisted analysis. Results should be reviewed by "
+                "a qualified professional."
+            ),
         },
-        "inference": {
-            "max_seq_len": 512,
-            "doc_stride": 128,
-            "max_answer_tokens": 64,
-            "no_answer_threshold": 0.35,
-            "min_confidence": 0.25,
-        },
-        "risk_bands": {
-            "low_max": 30,
-            "medium_max": 60,
-            "note": "0-30 LOW, 31-60 MEDIUM, 61-100 HIGH (configurable; heuristic engine only).",
-        },
+        "inference": INFERENCE_SETTINGS.copy(),
+        "risk_bands": RISK_BANDS.copy(),
         "clauses": clauses,
     }
 
-    OUT_PATH.parent.mkdir(parents=True, exist_ok=True)
-    OUT_PATH.write_text(json.dumps(config, indent=2, ensure_ascii=False), encoding="utf-8")
-    print(f"Wrote {OUT_PATH}")
-    print(f"Enabled clauses: {config['_meta']['n_enabled_v1']} / {config['_meta']['n_categories_total']}")
+
+def write_registry(
+    configuration: dict[str, Any],
+    destination: Path,
+) -> None:
+    """Create the output directory and write formatted JSON."""
+    destination.parent.mkdir(parents=True, exist_ok=True)
+
+    serialized_config = json.dumps(
+        configuration,
+        indent=2,
+        ensure_ascii=False,
+    )
+
+    destination.write_text(
+        serialized_config,
+        encoding="utf-8",
+    )
+
+
+def main() -> int:
+    """Run the clause registry generation workflow."""
+    try:
+        dataset = load_cuad_dataset(RAW_CUAD)
+        templates = extract_question_templates(dataset)
+        configuration = build_clause_registry(templates)
+        write_registry(configuration, OUTPUT_FILE)
+
+    except (OSError, ValueError) as exc:
+        print(f"ERROR: {exc}", file=sys.stderr)
+        return 1
+
+    metadata = configuration["_meta"]
+
+    print(f"Generated clause registry: {OUTPUT_FILE}")
+    print(
+        f"Enabled clauses: {metadata['n_enabled_v1']} / "
+        f"{metadata['n_categories_total']}"
+    )
+
     return 0
 
 
