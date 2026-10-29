@@ -55,13 +55,14 @@ The application may use a baseline model if the configured fine-tuned model cann
 
 The repository has included components such as:
 
-- `app.py` — Streamlit user interface
+- `app.py` — Streamlit user interface only for Question and anwering.
 - `api.py` — API entry point
 - `contract_risk_engine.py` — contract risk scoring/analysis logic
 - `evaluate_model.py` — model evaluation utilities
 - `train_clause_model.py` — clause-model training workflow
 - `build_vector_index.py` — vector-index construction
 - `vector_store.py` — vector-store integration
+- `inference.py` - Application with risk scoring and Q&A
 - `calibrate_model.py` — model calibration utilities
 - `Dockerfile` and `docker-compose.yml` — container configuration
 - `configs/`, `data/`, `models/`, `reports/`, and tests — configuration, data, model artifacts, reports, and test resources
