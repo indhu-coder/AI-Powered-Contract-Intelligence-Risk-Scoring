@@ -14,6 +14,7 @@
 - **Clause Intelligence Map** — signature SVG visualization of the contract and its clauses
 - **PDF / DOCX / TXT** support with safe handling of corrupt, encrypted and scanned files
 - **Contract history** — search, filter, reopen any previous analysis
+- **Questionnaire** - Input in the form of question to retrieve the answer from the model.
 - **GPU / CPU inference** — automatic device detection, no configuration needed
 - **Local-first privacy** — everything runs on your machine; no cloud, no paid APIs
 
